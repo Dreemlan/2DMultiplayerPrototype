@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqyxdb8yn0ubi"]
+
+[ext_resource type="PackedScene" uid="uid://custdjwi4dbmi" path="res://entity/platform_grass.tscn" id="2_pke2c"]
+[ext_resource type="PackedScene" uid="uid://c8a4rv8q4ou1c" path="res://entity/platform_ice.tscn" id="3_c2wm7"]
+
+[node name="MinigameIceBreak" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+
+[node name="PlatformGrass" parent="." instance=ExtResource("2_pke2c")]
+position = Vector2(-96, 8)
+
+[node name="PlatformGrass2" parent="." instance=ExtResource("2_pke2c")]
+position = Vector2(-48, 8)
+
+[node name="PlatformGrass3" parent="." instance=ExtResource("2_pke2c")]
+position = Vector2(0, 8)
+
+[node name="PlatformGrass4" parent="." instance=ExtResource("2_pke2c")]
+position = Vector2(48, 8)
+
+[node name="PlatformGrass5" parent="." instance=ExtResource("2_pke2c")]
+position = Vector2(96, 8)
+
+[node name="PlatformGrass6" parent="." instance=ExtResource("2_pke2c")]
+position = Vector2(96, 8)
+
+[node name="PlatformIce" parent="." instance=ExtResource("3_c2wm7")]
+position = Vector2(-72, 8)
+
+[node name="PlatformIce2" parent="." instance=ExtResource("3_c2wm7")]
+position = Vector2(-24, 8)
+
+[node name="PlatformIce3" parent="." instance=ExtResource("3_c2wm7")]
+position = Vector2(24, 8)
+
+[node name="PlatformIce4" parent="." instance=ExtResource("3_c2wm7")]
+position = Vector2(72, 8)
+
+[node name="SpawnPoint1" type="Marker2D" parent="."]
+position = Vector2(-72, -8)
+
+[node name="SpawnPoint2" type="Marker2D" parent="."]
+position = Vector2(-24, -8)
+
+[node name="SpawnPoint3" type="Marker2D" parent="."]
+position = Vector2(24, -8)
+
+[node name="SpawnPoint4" type="Marker2D" parent="."]
+position = Vector2(72, -8)
