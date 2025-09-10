@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bkim2m3mo5c3c" path="res://multiplayer/multiplayer.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dnaqivt1gcycs" path="res://system/player_manager.tscn" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c64gkpuxl5b4p" path="res://component/camera/server_camera.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://bxto4t6fgqwco" path="res://level/level_lobby.tscn" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dqyxdb8yn0ubi" path="res://level/level_icebreak.tscn" id="4_lquwl"]
 
 [node name="Main" type="Node"]
 
@@ -14,4 +14,4 @@ script = ExtResource("1_1bvp3")
 
 [node name="ServerCamera" parent="." instance=ExtResource("4_1bvp3")]
 
-[node name="MinigameLobby" parent="." instance=ExtResource("4_lquwl")]
+[node name="LevelIceBreak" parent="." instance=ExtResource("4_lquwl")]

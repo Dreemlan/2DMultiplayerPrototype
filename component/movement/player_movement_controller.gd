@@ -1,7 +1,7 @@
 extends Node
 
-const JUMP_FORCE := 200
-const MOVE_SPEED := 2000
+const JUMP_FORCE := 400
+const MOVE_SPEED := 1500
 
 var movement_vector := Vector2.ZERO
 
@@ -10,8 +10,8 @@ var movement_vector := Vector2.ZERO
 
 
 func _ready() -> void:
-	node.linear_damp = 8
-	node.angular_damp = 8
+	node.linear_damp = 6
+	node.angular_damp = 0
 	
 	raycast.enabled = false
 	raycast.target_position = Vector2(0, 12)
@@ -23,6 +23,9 @@ func _physics_process(_delta: float) -> void:
 	elif node.name == str(multiplayer.get_unique_id()):
 		movement_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 		if movement_vector != Vector2.ZERO:
+			raycast.global_rotation = 0
+			raycast.force_raycast_update()
+			if not raycast.is_colliding(): movement_vector.y = 0
 			rpc_id(1, "request_move", movement_vector)
 		
 		if Input.is_action_just_pressed("jump"):
@@ -35,6 +38,9 @@ func _physics_process(_delta: float) -> void:
 @rpc("any_peer", "unreliable")
 func request_move(client_movement_vector: Vector2) -> void:
 	if multiplayer.is_server():
+		raycast.global_rotation = 0
+		raycast.force_raycast_update()
+		if not raycast.is_colliding(): client_movement_vector.y = 0
 		node.apply_central_force(client_movement_vector * MOVE_SPEED)
 	else:
 		pass

@@ -1,62 +1,105 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqyxdb8yn0ubi"]
+[gd_scene load_steps=5 format=3 uid="uid://dqyxdb8yn0ubi"]
 
 [ext_resource type="Script" uid="uid://d3h3vrrt00xlw" path="res://level/level_icebreak.gd" id="1_i7esh"]
+[ext_resource type="Texture2D" uid="uid://70c068vj0te2" path="res://sprite/prototype/checker_dark.png" id="2_fkg0o"]
 [ext_resource type="PackedScene" uid="uid://c8a4rv8q4ou1c" path="res://entity/platform_ice.tscn" id="3_c2wm7"]
+[ext_resource type="Texture2D" uid="uid://cdihrk6stmliw" path="res://sprite/prototype/solid_darkblue.png" id="3_fug02"]
 
-[node name="MinigameIceBreak" type="Node2D"]
+[node name="LevelIceBreak" type="Node2D"]
 script = ExtResource("1_i7esh")
+
+[node name="Background" type="TextureRect" parent="."]
+texture_repeat = 2
+offset_left = -8011.0
+offset_top = -4474.0
+offset_right = 8241.0
+offset_bottom = 4469.0
+texture = ExtResource("2_fkg0o")
+stretch_mode = 1
+
+[node name="Water" type="TextureRect" parent="."]
+offset_left = -289.0
+offset_right = 266.0
+offset_bottom = 249.0
+texture = ExtResource("3_fug02")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerScoreContainer" type="HBoxContainer" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
 [node name="Ice" type="Node" parent="."]
 
 [node name="PlatformIce" parent="Ice" instance=ExtResource("3_c2wm7")]
-position = Vector2(-84, 8)
+position = Vector2(-216, 8)
 
 [node name="PlatformIce2" parent="Ice" instance=ExtResource("3_c2wm7")]
-position = Vector2(-60, 8)
+position = Vector2(-168, 8)
 
 [node name="PlatformIce3" parent="Ice" instance=ExtResource("3_c2wm7")]
-position = Vector2(-36, 8)
+position = Vector2(-120, 8)
 
 [node name="PlatformIce4" parent="Ice" instance=ExtResource("3_c2wm7")]
-position = Vector2(-12, 8)
+position = Vector2(-72, 8)
 
 [node name="PlatformIce5" parent="Ice" instance=ExtResource("3_c2wm7")]
-position = Vector2(12, 8)
+position = Vector2(-24, 8)
 
 [node name="PlatformIce6" parent="Ice" instance=ExtResource("3_c2wm7")]
-position = Vector2(36, 8)
+position = Vector2(24, 8)
 
 [node name="PlatformIce7" parent="Ice" instance=ExtResource("3_c2wm7")]
-position = Vector2(60, 8)
+position = Vector2(72, 8)
 
 [node name="PlatformIce8" parent="Ice" instance=ExtResource("3_c2wm7")]
-position = Vector2(83, 8)
+position = Vector2(120, 8)
+
+[node name="PlatformIce9" parent="Ice" instance=ExtResource("3_c2wm7")]
+position = Vector2(168, 8)
+
+[node name="PlatformIce10" parent="Ice" instance=ExtResource("3_c2wm7")]
+position = Vector2(216, 8)
 
 [node name="SpawnPoints" type="Node" parent="."]
 
 [node name="SpawnPoint1" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-84, -8)
+position = Vector2(-59, -10)
 
 [node name="SpawnPoint2" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-60, -8)
+position = Vector2(-42, -10)
 
 [node name="SpawnPoint3" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-36, -8)
+position = Vector2(-25, -10)
 
 [node name="SpawnPoint4" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-12, -8)
+position = Vector2(-8, -10)
 
 [node name="SpawnPoint5" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(12, -8)
+position = Vector2(9, -10)
 
 [node name="SpawnPoint6" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(36, -8)
+position = Vector2(26, -10)
 
 [node name="SpawnPoint7" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(60, -8)
+position = Vector2(43, -10)
 
 [node name="SpawnPoint8" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(83, -8)
+position = Vector2(60, -10)

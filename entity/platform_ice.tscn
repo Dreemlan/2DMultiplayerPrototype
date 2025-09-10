@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://c8a4rv8q4ou1c"]
 
-[ext_resource type="Texture2D" uid="uid://bpjj3qamkmwwp" path="res://sprite/level/platform_ice.png" id="1_2arb6"]
 [ext_resource type="Script" uid="uid://5geishtyeqvw" path="res://entity/platform_ice.gd" id="1_ku4sl"]
+[ext_resource type="Texture2D" uid="uid://b32ubkuo88ew1" path="res://sprite/prototype/ice.png" id="2_ku4sl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
-size = Vector2(16, 16)
+size = Vector2(48, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ku4sl"]
-size = Vector2(18, 18)
+size = Vector2(48, 30)
 
 [node name="PlatformIce" type="StaticBody2D"]
 collision_mask = 2
@@ -17,12 +17,15 @@ script = ExtResource("1_ku4sl")
 shape = SubResource("RectangleShape2D_1bvp3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_2arb6")
+scale = Vector2(3, 1)
+texture = ExtResource("2_ku4sl")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_ku4sl")
 debug_color = Color(0.982904, 0, 0.357955, 0.42)

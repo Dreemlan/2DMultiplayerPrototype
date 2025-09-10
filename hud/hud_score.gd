@@ -1,12 +1,7 @@
 extends VBoxContainer
 
-@export var ice_block: Node
+@onready var player_label: Label = $PlayerLabel
+@onready var score_label: Label = $ScoreLabel
 
-@onready var player: Label = $Player
-@onready var score: Label = $Score
-
-func _process(_delta: float) -> void:
-	if ice_block:
-		score.text = str(ice_block.total_score)
-	else:
-		score.text = "X"
+func setup_player_score(player_number: int) -> void:
+	player_label.text = "P%s" % player_number
