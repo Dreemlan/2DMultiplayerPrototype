@@ -7,16 +7,21 @@ var random_score := random_goal + 1
 var total_score := 0
 
 func _ready() -> void:
-	area_2d.body_entered.connect(_on_player_collision)
+	if multiplayer.is_server():
+		area_2d.body_entered.connect(_on_player_collision)
 
 func _on_player_collision(_player) -> void:
 	random_score = randi_range(0, 10)
 	
-	print("Player collided with ice: ", self.name)
-	print("Score is: ", random_score, " and goal is ", random_goal)
-	
 	if random_score == random_goal:
 		total_score = 0
-		queue_free() 
+		rpc("destroy_entity")
 	else:
 		total_score += 1
+
+@rpc("authority", "call_local", "reliable")
+func destroy_entity() -> void:
+	if multiplayer.is_server():
+		queue_free()
+	else:
+		queue_free()

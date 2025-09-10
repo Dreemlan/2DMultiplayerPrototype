@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqyxdb8yn0ubi"]
+
+[ext_resource type="Script" uid="uid://d3h3vrrt00xlw" path="res://level/level_icebreak.gd" id="1_i7esh"]
+[ext_resource type="PackedScene" uid="uid://c8a4rv8q4ou1c" path="res://entity/platform_ice.tscn" id="3_c2wm7"]
+
+[node name="MinigameIceBreak" type="Node2D"]
+script = ExtResource("1_i7esh")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+
+[node name="Ice" type="Node" parent="."]
+
+[node name="PlatformIce" parent="Ice" instance=ExtResource("3_c2wm7")]
+position = Vector2(-84, 8)
+
+[node name="PlatformIce2" parent="Ice" instance=ExtResource("3_c2wm7")]
+position = Vector2(-60, 8)
+
+[node name="PlatformIce3" parent="Ice" instance=ExtResource("3_c2wm7")]
+position = Vector2(-36, 8)
+
+[node name="PlatformIce4" parent="Ice" instance=ExtResource("3_c2wm7")]
+position = Vector2(-12, 8)
+
+[node name="PlatformIce5" parent="Ice" instance=ExtResource("3_c2wm7")]
+position = Vector2(12, 8)
+
+[node name="PlatformIce6" parent="Ice" instance=ExtResource("3_c2wm7")]
+position = Vector2(36, 8)
+
+[node name="PlatformIce7" parent="Ice" instance=ExtResource("3_c2wm7")]
+position = Vector2(60, 8)
+
+[node name="PlatformIce8" parent="Ice" instance=ExtResource("3_c2wm7")]
+position = Vector2(83, 8)
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="SpawnPoint1" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-84, -8)
+
+[node name="SpawnPoint2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-60, -8)
+
+[node name="SpawnPoint3" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-36, -8)
+
+[node name="SpawnPoint4" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-12, -8)
+
+[node name="SpawnPoint5" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(12, -8)
+
+[node name="SpawnPoint6" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(36, -8)
+
+[node name="SpawnPoint7" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(60, -8)
+
+[node name="SpawnPoint8" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(83, -8)

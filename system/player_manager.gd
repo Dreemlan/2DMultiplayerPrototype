@@ -12,7 +12,7 @@ func spawn_player(peer_id: int) -> void:
 	
 	var player = PLAYER.instantiate()
 	player.name = str(peer_id)
-	add_child(player)
+	get_parent().add_child(player)
 	
 	if multiplayer.is_server():
 		for peer in multiplayer.get_peers():

@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxto4t6fgqwco"]
+
+[ext_resource type="Script" uid="uid://7q32llvtai2c" path="res://level/level_lobby.gd" id="1_0eqbo"]
+[ext_resource type="Texture2D" uid="uid://dhwpvkisf6w2s" path="res://sprite/prototype/lightblue.png" id="2_6v813"]
+[ext_resource type="Texture2D" uid="uid://bqak81e3oiijm" path="res://sprite/prototype/bluegray.png" id="3_3ne6f"]
+[ext_resource type="Texture2D" uid="uid://cldy46efigdx2" path="res://sprite/prototype/lightgreen.png" id="4_yg3e2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jbh6"]
+size = Vector2(304, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0eqbo"]
+size = Vector2(20, 38)
+
+[node name="LevelLobby" type="Node2D"]
+script = ExtResource("1_0eqbo")
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GUI/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -26.0
+offset_right = 26.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "LOBBY"
+
+[node name="ReadyCount" type="Label" parent="GUI/Control"]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 35.0
+offset_right = 616.0
+offset_bottom = 58.0
+text = "0/0 Ready"
+
+[node name="Sky" type="TextureRect" parent="."]
+offset_left = -1740.0
+offset_top = -1042.0
+offset_right = -1700.0
+offset_bottom = -1002.0
+scale = Vector2(110.344, 59.5762)
+texture = ExtResource("2_6v813")
+
+[node name="Stone" type="TextureRect" parent="."]
+offset_left = -98.0
+offset_top = 10.0
+offset_right = -58.0
+offset_bottom = 50.0
+scale = Vector2(4.83722, 1.56802)
+texture = ExtResource("3_3ne6f")
+
+[node name="Grass" type="TextureRect" parent="."]
+offset_left = -152.0
+offset_right = -112.0
+offset_bottom = 40.0
+scale = Vector2(7.62809, 0.64227)
+texture = ExtResource("4_yg3e2")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_8jbh6")
+
+[node name="DoorIceBreak" type="Area2D" parent="."]
+position = Vector2(76, -19)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorIceBreak"]
+shape = SubResource("RectangleShape2D_0eqbo")
+
+[node name="TextureRect" type="TextureRect" parent="DoorIceBreak"]
+offset_left = -9.0
+offset_top = -19.0
+offset_right = 31.0
+offset_bottom = 21.0
+scale = Vector2(0.457816, 0.943655)
+texture = ExtResource("3_3ne6f")
