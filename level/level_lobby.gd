@@ -7,16 +7,14 @@ var ready_yes_count := 0
 @onready var door_ice_break: Area2D = $DoorIceBreak
 
 func _ready() -> void:
-	if not multiplayer.is_server(): return
-	
-	door_ice_break.body_entered.connect(_on_player_ready)
-	door_ice_break.body_exited.connect(_on_player_unready)
-	
-	for peer in multiplayer.get_peers():
-		ready_status[peer] = false
-	
-	multiplayer.peer_connected.connect(_on_peer_connect)
-	multiplayer.peer_disconnected.connect(_on_peer_disconnect)
+	if multiplayer.is_server():
+		for peer in multiplayer.get_peers():
+			ready_status[peer] = false
+		
+		door_ice_break.body_entered.connect(_on_player_ready)
+		door_ice_break.body_exited.connect(_on_player_unready)
+		multiplayer.peer_connected.connect(_on_peer_connect)
+		multiplayer.peer_disconnected.connect(_on_peer_disconnect)
 
 func _on_peer_connect(peer: int) -> void:
 	ready_status[peer] = false

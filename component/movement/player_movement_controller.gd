@@ -1,6 +1,6 @@
 extends Node
 
-const JUMP_FORCE := 400
+const JUMP_FORCE := 550
 const MOVE_SPEED := 1500
 
 var movement_vector := Vector2.ZERO

@@ -13,7 +13,6 @@ func _ready() -> void:
 		area_2d.body_entered.connect(_on_player_collision)
 
 func _on_player_collision(player: RigidBody2D) -> void:
-	print("Collision")
 	random_score = randi_range(0, 10)
 	
 	if random_score == random_goal:
@@ -22,6 +21,9 @@ func _on_player_collision(player: RigidBody2D) -> void:
 	else:
 		emit_signal("player_scored", int(player.name))
 		#total_score += 1
+
+func enable_collision() -> void:
+	area_2d.monitoring = true
 
 @rpc("authority", "call_local", "reliable")
 func destroy_entity() -> void:

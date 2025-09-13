@@ -15,6 +15,10 @@ run/main_scene="uid://qrdc2dstxdfy"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Helper="*res://global/helper.gd"
+
 [input]
 
 move_up={
