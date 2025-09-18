@@ -1,16 +1,17 @@
 extends Node
 
-@onready var node = get_parent() as RigidBody2D
+@onready var node = get_parent()
 
 
 func _ready() -> void:
 	if multiplayer.is_server():
 		pass
 	else:
-		# Disable client physics
-		node.freeze_mode = RigidBody2D.FREEZE_MODE_KINEMATIC
-		node.freeze = true
-		node.gravity_scale = 0.0
+		if node is RigidBody2D:
+			# Disable client physics
+			node.freeze_mode = RigidBody2D.FREEZE_MODE_KINEMATIC
+			node.freeze = true
+			node.gravity_scale = 0.0
 
 
 func _physics_process(_delta: float) -> void:

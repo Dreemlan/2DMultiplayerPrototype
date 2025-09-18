@@ -12,8 +12,6 @@ func _ready() -> void:
 func spawn_player(peer_id: int) -> void:
 	if main.has_node(str(peer_id)): return
 	
-	Helper.log("Spawning player: %s" % peer_id)
-	
 	var player = PLAYER.instantiate()
 	player.name = str(peer_id)
 	main.add_child(player)

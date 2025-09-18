@@ -19,7 +19,6 @@ func _ready() -> void:
 func _on_peer_connect(peer: int) -> void:
 	ready_status[peer] = false
 	ready_count.text = "0/%s Ready" % ready_status.size()
-	print(ready_status)
 
 func _on_peer_disconnect(peer: int) -> void:
 	ready_status.erase(peer)
