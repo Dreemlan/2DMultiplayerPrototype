@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://86fjqpq2tbck"]
-
-[ext_resource type="Script" uid="uid://65rx3eqw174r" path="res://component/movement/rigid_body_movement_controller.gd" id="1_kg1xo"]
-
-[node name="RigidBodyMovementController" type="Node2D"]
-script = ExtResource("1_kg1xo")
-
-[node name="RayCast2D" type="RayCast2D" parent="."]

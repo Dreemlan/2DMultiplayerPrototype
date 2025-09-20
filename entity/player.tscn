@@ -1,15 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://dkaop87dyxxox"]
 
 [ext_resource type="Texture2D" uid="uid://cfwuc7tutc1yg" path="res://icon.svg" id="2_tnfmr"]
-[ext_resource type="Script" uid="uid://ngg6lwr4weuh" path="res://component/movement/character_body_movement_controller.gd" id="3_3hik6"]
+[ext_resource type="PackedScene" uid="uid://cyoajpyvxaaq" path="res://component/movement/player_movement_platformer.tscn" id="3_qd8qs"]
 [ext_resource type="PackedScene" uid="uid://cf3tc7tdnuyni" path="res://hud/player_name_label.tscn" id="4_3hik6"]
+[ext_resource type="PackedScene" uid="uid://jnlnvsgv7t3m" path="res://component/networking/sync_transform.tscn" id="4_tnfmr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hsefk"]
 size = Vector2(16, 16)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qd8qs"]
-
-[node name="ClientPlayer" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
 
@@ -22,11 +21,6 @@ shape = SubResource("RectangleShape2D_hsefk")
 
 [node name="PlayerNameLabel" parent="." instance=ExtResource("4_3hik6")]
 
-[node name="ServerPlayer" type="CharacterBody2D" parent="."]
-collision_layer = 2
-collision_mask = 5
-script = ExtResource("3_3hik6")
+[node name="PlayerMovementPlatformer" parent="." instance=ExtResource("3_qd8qs")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ServerPlayer"]
-shape = SubResource("CircleShape2D_qd8qs")
-debug_color = Color(0.624244, 0.532499, 0, 0.42)
+[node name="SyncTransform" parent="." instance=ExtResource("4_tnfmr")]

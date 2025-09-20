@@ -12,7 +12,7 @@ func _ready() -> void:
 	if multiplayer.is_server():
 		area_2d.body_entered.connect(_on_player_collision)
 
-func _on_player_collision(player: RigidBody2D) -> void:
+func _on_player_collision(player) -> void:
 	random_score = randi_range(0, 10)
 	
 	if random_score == random_goal:
