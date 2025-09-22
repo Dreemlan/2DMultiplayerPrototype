@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqak81e3oiijm"
-path="res://.godot/imported/bluegray.png-a63ddb20c06689e0d8ca50e1573c4f00.ctex"
+uid="uid://cxu2rien8lk2l"
+path="res://.godot/imported/IceTileSet.png-0702881a505c73b73d7257e5223b8d8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/prototype/bluegray.png"
-dest_files=["res://.godot/imported/bluegray.png-a63ddb20c06689e0d8ca50e1573c4f00.ctex"]
+source_file="res://art/IceTileSet.png"
+dest_files=["res://.godot/imported/IceTileSet.png-0702881a505c73b73d7257e5223b8d8c.ctex"]
 
 [params]
 
