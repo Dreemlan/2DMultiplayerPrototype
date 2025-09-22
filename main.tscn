@@ -1,18 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://qrdc2dstxdfy"]
+[gd_scene load_steps=3 format=3 uid="uid://qrdc2dstxdfy"]
 
-[ext_resource type="Script" uid="uid://bkim2m3mo5c3c" path="res://multiplayer/multiplayer.gd" id="1_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://dnaqivt1gcycs" path="res://system/player_manager.tscn" id="2_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://c64gkpuxl5b4p" path="res://component/camera/server_camera.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://bxto4t6fgqwco" path="res://level/level_lobby.tscn" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://cgxnibejufxti" path="res://level/Art_test.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://c64gkpuxl5b4p" path="res://component/camera/camera.tscn" id="4_1bvp3"]
 
 [node name="Main" type="Node"]
 
-[node name="Multiplayer" type="Node" parent="."]
-script = ExtResource("1_1bvp3")
+[node name="Camera" parent="." instance=ExtResource("4_1bvp3")]
 
-[node name="PlayerManager" parent="." instance=ExtResource("2_1bvp3")]
-
-[node name="ServerCamera" parent="." instance=ExtResource("4_1bvp3")]
-zoom = Vector2(2, 2)
-
-[node name="LevelLobby" parent="." instance=ExtResource("4_lquwl")]
+[node name="ArtTest" parent="." instance=ExtResource("2_0xm2m")]

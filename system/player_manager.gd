@@ -1,20 +1,17 @@
 extends Node
 
-const PLAYER = preload("res://entity/player.tscn")
+const PLAYER_SCENE = preload("res://entity/player.tscn")
 
-@onready var main = get_parent()
-
-func _ready() -> void:
-	if multiplayer.is_server():
-		multiplayer.peer_connected.connect(spawn_player)
+@onready var game_world = get_parent().get_node("Main")
 
 @rpc("authority", "reliable")
 func spawn_player(peer_id: int) -> void:
-	if main.has_node(str(peer_id)): return
+	var player_node_name = str(peer_id)
+	if game_world.has_node(player_node_name): return
 	
-	var player = PLAYER.instantiate()
-	player.name = str(peer_id)
-	main.add_child(player)
+	var player = PLAYER_SCENE.instantiate()
+	player.name = player_node_name
+	game_world.add_child(player)
 	
 	if multiplayer.is_server():
 		for peer in multiplayer.get_peers():

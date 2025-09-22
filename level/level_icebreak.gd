@@ -5,7 +5,7 @@ var player_scores: Dictionary[int, int] = {}
 var player_numbers: Dictionary[int, int] = {}
 
 ## Both server and client
-const HUD_SCORE = preload("res://hud/hud_score.tscn")
+const HUD_SCORE = preload("res://gui/hud/hud_score.tscn")
 
 @onready var main = get_parent()
 @onready var camera_2d: Camera2D = $Camera2D

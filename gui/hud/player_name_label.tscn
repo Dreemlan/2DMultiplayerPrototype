@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cf3tc7tdnuyni"]
 
-[ext_resource type="Script" uid="uid://cv55tvltmc7br" path="res://hud/player_name.gd" id="1_8c628"]
+[ext_resource type="Script" uid="uid://cv55tvltmc7br" path="res://gui/hud/player_name.gd" id="1_8c628"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8c628"]
 font_size = 9
@@ -23,6 +23,6 @@ offset_right = 29.5
 offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "PEER ID"
+text = "PLAYER NAME"
 label_settings = SubResource("LabelSettings_8c628")
 horizontal_alignment = 1

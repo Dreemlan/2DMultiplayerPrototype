@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxto4t6fgqwco"]
+[gd_scene load_steps=6 format=3 uid="uid://bxto4t6fgqwco"]
 
 [ext_resource type="Script" uid="uid://7q32llvtai2c" path="res://level/level_lobby.gd" id="1_0eqbo"]
 [ext_resource type="Texture2D" uid="uid://dhwpvkisf6w2s" path="res://sprite/prototype/lightblue.png" id="2_6v813"]
@@ -7,12 +7,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8jbh6"]
 size = Vector2(304, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0eqbo"]
-size = Vector2(20, 38)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ne6f"]
-size = Vector2(20, 217)
 
 [node name="LevelLobby" type="Node2D"]
 script = ExtResource("1_0eqbo")
@@ -124,33 +118,3 @@ texture = ExtResource("4_yg3e2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground4"]
 position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_8jbh6")
-
-[node name="DoorIceBreak" type="Area2D" parent="."]
-position = Vector2(76, 76)
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorIceBreak"]
-shape = SubResource("RectangleShape2D_0eqbo")
-
-[node name="TextureRect" type="TextureRect" parent="DoorIceBreak"]
-offset_left = -9.0
-offset_top = -19.0
-offset_right = 31.0
-offset_bottom = 21.0
-scale = Vector2(0.457816, 0.943655)
-texture = ExtResource("3_3ne6f")
-
-[node name="OutOfBounds1" type="StaticBody2D" parent="."]
-position = Vector2(-161, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OutOfBounds1"]
-position = Vector2(0, 98.5)
-shape = SubResource("RectangleShape2D_3ne6f")
-
-[node name="OutOfBounds2" type="StaticBody2D" parent="."]
-position = Vector2(161, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OutOfBounds2"]
-position = Vector2(0, 98.5)
-shape = SubResource("RectangleShape2D_3ne6f")

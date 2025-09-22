@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://bud836iugnnjy"]
+
+[ext_resource type="Script" uid="uid://clnqwgpek2ppd" path="res://gui/menu/main_menu.gd" id="1_l2prv"]
+[ext_resource type="FontFile" uid="uid://8adxwhx8wajc" path="res://font/Jersey10-Regular.ttf" id="1_uawun"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l2prv"]
+font_size = 64
+
+[sub_resource type="Theme" id="Theme_m54ne"]
+Button/font_sizes/font_size = 19
+Button/fonts/font = ExtResource("1_uawun")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l2prv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.49019608, 1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 219.0
+offset_right = 776.0
+offset_bottom = 429.0
+
+[node name="LabelTitle" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "MAIN MENU"
+label_settings = SubResource("LabelSettings_l2prv")
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_m54ne")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonHost" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Host"
+
+[node name="ButtonJoin" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Join"
+
+[node name="ButtonSettings" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Settings"
+
+[node name="ButtonQuit" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quit"
