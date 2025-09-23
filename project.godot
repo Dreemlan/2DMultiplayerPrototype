@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 Helper="*res://global/helper.gd"
 Multiplayer="*res://multiplayer/multiplayer.gd"
-PlayerManager="*res://system/player_manager.gd"
+PlayerManager="*res://global/player_manager.gd"
 
 [input]
 
