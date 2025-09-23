@@ -6,9 +6,8 @@ const PLAYER_SCENE = preload("res://entity/player_icebreak.tscn")
 ## Server-side
 var player_scores: Dictionary[int, int] = {}
 var player_numbers: Dictionary[int, int] = {}
-
-var cell
-var tile_id
+var player_nodes: Array = []
+var player_can_collide: Dictionary[int, bool] = {}
 
 ## Both server and client
 const HUD_SCORE = preload("res://gui/hud/hud_score.tscn")
@@ -37,16 +36,37 @@ func _ready() -> void:
 			server_setup_player(peer_id)
 
 func _physics_process(_delta: float) -> void:
+	# Game start timer
 	var start_timer_left: int = int(start_timer.get_time_left())
 	start_timer_label.text = str(start_timer_left)
 	if start_timer_left == 0:
 		start_timer_label.visible = false
+	
+	if multiplayer.is_server():
+		# Player collision with ice checks
+		for player: CharacterBody2D in player_nodes:
+			var peer_id = int(player.name)
+			
+			if not player.is_on_floor():
+				player_can_collide[peer_id] = true
+			
+			var last_collision = null
+			if player_can_collide[peer_id] == true:
+				var latest_collision = player.get_last_slide_collision()
+				if last_collision != latest_collision:
+					# Get cell coords
+					var cell_coords: Vector2 = tile_map_layer.local_to_map(latest_collision.get_position() - latest_collision.get_normal())
+					# Get tile id using cell coords
+					var tile_id = tile_map_layer.get_cell_source_id(cell_coords)
+					var destroyed_tile_id = 2
+					if tile_id == 0:
+						tile_map_layer.set_cell(cell_coords, destroyed_tile_id)
+					
+					player_can_collide[peer_id] = false
+					last_collision = latest_collision
 
 func _on_game_start() -> void:
 	pass
-	#for platform in platforms.get_children():
-		#platform.player_scored.connect(_on_player_scored)
-		#platform.enable_collision()
 
 func _on_player_scored(peer_id: int) -> void:
 	if not player_scores.has(peer_id): return
@@ -62,6 +82,7 @@ func _on_player_eliminated(player_body) -> void:
 func server_setup_player(peer_id: int) -> void:
 	if has_node(str(peer_id)): return # Early exit
 	# Server-side only
+	player_can_collide[peer_id] = true
 	server_setup_player_number(peer_id)
 	spawn_player(peer_id)
 	move_player_to_spawn(peer_id)
@@ -90,6 +111,7 @@ func spawn_player(peer_id: int) -> void:
 	var player = PLAYER_SCENE.instantiate()
 	player.name = player_node_name
 	add_child(player)
+	player_nodes.append(player)
 	
 	if multiplayer.is_server():
 		for peer in multiplayer.get_peers():

@@ -44,4 +44,4 @@ func register_player(peer_id: int) -> void:
 		for peer in multiplayer.get_peers():
 			rpc("register_player", peer)
 	
-	Helper.log("Registered player: %s, %s" % [peer_id, player_id])
+	#Helper.log("Registered player: %s, %s" % [peer_id, player_id])

@@ -18,7 +18,6 @@ one_shot = true
 autostart = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Control" type="Control" parent="HUD"]
 layout_mode = 3
