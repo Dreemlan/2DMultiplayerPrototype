@@ -1,8 +1,14 @@
 extends Node2D
 
+# Entities of level
+const PLAYER_SCENE = preload("res://entity/player_icebreak.tscn")
+
 ## Server-side
 var player_scores: Dictionary[int, int] = {}
 var player_numbers: Dictionary[int, int] = {}
+
+var cell
+var tile_id
 
 ## Both server and client
 const HUD_SCORE = preload("res://gui/hud/hud_score.tscn")
@@ -14,6 +20,7 @@ const HUD_SCORE = preload("res://gui/hud/hud_score.tscn")
 @onready var spawn_points: Array = get_node("SpawnPoints").get_children()
 @onready var start_timer: Timer = $StartTimer
 @onready var start_timer_label: Label = $HUD/Control/StartTimerLabel
+@onready var tile_map_layer: TileMapLayer = $TileMapLayer
 
 
 func _ready() -> void:
@@ -53,9 +60,10 @@ func _on_player_eliminated(player_body) -> void:
 	player_body.set_deferred("gravity_scale", 0.3)
 
 func server_setup_player(peer_id: int) -> void:
-	if not main.has_node(str(peer_id)): return # Early exit
+	if has_node(str(peer_id)): return # Early exit
 	# Server-side only
 	server_setup_player_number(peer_id)
+	spawn_player(peer_id)
 	move_player_to_spawn(peer_id)
 	# Both server and client
 	rpc("setup_player_score", peer_id)
@@ -70,10 +78,22 @@ func server_setup_player_number(peer_id: int) -> void:
 		rpc("send_clients_player_numbers", player_numbers)
 
 func move_player_to_spawn(peer_id: int) -> void:
-	var player_node = main.get_node(str(peer_id))
+	var player_node = get_node(str(peer_id))
 	var spawn_point = spawn_points[player_numbers[peer_id]]
 	player_node.global_position = spawn_point.global_position
 
+@rpc("authority", "reliable")
+func spawn_player(peer_id: int) -> void:
+	var player_node_name = str(peer_id)
+	if has_node(player_node_name): return
+	
+	var player = PLAYER_SCENE.instantiate()
+	player.name = player_node_name
+	add_child(player)
+	
+	if multiplayer.is_server():
+		for peer in multiplayer.get_peers():
+			rpc("spawn_player", peer)
 
 @rpc("any_peer", "reliable")
 func get_player_score(peer_id: int) -> int:

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkaop87dyxxox"]
+
+[ext_resource type="Texture2D" uid="uid://cfwuc7tutc1yg" path="res://icon.svg" id="1_drctx"]
+[ext_resource type="PackedScene" uid="uid://cf3tc7tdnuyni" path="res://gui/hud/player_name_label.tscn" id="2_2nha7"]
+[ext_resource type="PackedScene" uid="uid://cyoajpyvxaaq" path="res://component/movement/player_movement_platformer.tscn" id="3_1afbj"]
+[ext_resource type="PackedScene" uid="uid://jnlnvsgv7t3m" path="res://component/networking/sync_transform.tscn" id="4_sfgjp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hsefk"]
+size = Vector2(16, 16)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.125681, 0.125681)
+texture = ExtResource("1_drctx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hsefk")
+
+[node name="PlayerNameLabel" parent="." instance=ExtResource("2_2nha7")]
+
+[node name="PlayerMovementPlatformer" parent="." instance=ExtResource("3_1afbj")]
+
+[node name="SyncTransform" parent="." instance=ExtResource("4_sfgjp")]

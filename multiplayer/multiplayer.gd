@@ -26,11 +26,9 @@ func _ready() -> void:
 func _on_peer_connect(peer_id: int) -> void:
 	Helper.log("%s connected" % peer_id)
 	register_player(peer_id)
-	PlayerManager.spawn_player(peer_id)
 
 func _on_peer_disconnect(peer_id: int) -> void:
 	Helper.log("%s disconnected" % peer_id)
-
 
 @rpc("authority", "reliable")
 func register_player(peer_id: int) -> void:
