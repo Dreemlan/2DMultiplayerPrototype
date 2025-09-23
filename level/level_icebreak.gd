@@ -10,7 +10,6 @@ const HUD_SCORE = preload("res://gui/hud/hud_score.tscn")
 @onready var main = get_parent()
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var elimination_zone: Area2D = $EliminationZone
-@onready var platforms: Node = $Platforms
 @onready var GUI_player_score_container: HBoxContainer = $HUD/Control/PlayerScoreContainer
 @onready var spawn_points: Array = get_node("SpawnPoints").get_children()
 @onready var start_timer: Timer = $StartTimer
@@ -37,9 +36,10 @@ func _physics_process(_delta: float) -> void:
 		start_timer_label.visible = false
 
 func _on_game_start() -> void:
-	for platform in platforms.get_children():
-		platform.player_scored.connect(_on_player_scored)
-		platform.enable_collision()
+	pass
+	#for platform in platforms.get_children():
+		#platform.player_scored.connect(_on_player_scored)
+		#platform.enable_collision()
 
 func _on_player_scored(peer_id: int) -> void:
 	if not player_scores.has(peer_id): return

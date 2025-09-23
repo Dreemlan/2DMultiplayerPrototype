@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqyxdb8yn0ubi"]
+[gd_scene load_steps=5 format=4 uid="uid://dqyxdb8yn0ubi"]
 
 [ext_resource type="Script" uid="uid://d3h3vrrt00xlw" path="res://level/level_icebreak.gd" id="1_i7esh"]
-[ext_resource type="PackedScene" uid="uid://c8a4rv8q4ou1c" path="res://entity/platform_ice.tscn" id="3_c2wm7"]
+[ext_resource type="TileSet" uid="uid://cvkcblkg6dbm0" path="res://art/tileset/tileset_ice.tres" id="3_fkg0o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fug02"]
 font_size = 48
@@ -15,6 +15,7 @@ script = ExtResource("1_i7esh")
 zoom = Vector2(3, 3)
 
 [node name="HUD" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Control" type="Control" parent="HUD"]
 layout_mode = 3
@@ -54,38 +55,6 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
-[node name="Platforms" type="Node" parent="."]
-
-[node name="PlatformIce" parent="Platforms" instance=ExtResource("3_c2wm7")]
-position = Vector2(-216, 8)
-
-[node name="PlatformIce2" parent="Platforms" instance=ExtResource("3_c2wm7")]
-position = Vector2(-168, 8)
-
-[node name="PlatformIce3" parent="Platforms" instance=ExtResource("3_c2wm7")]
-position = Vector2(-120, 8)
-
-[node name="PlatformIce4" parent="Platforms" instance=ExtResource("3_c2wm7")]
-position = Vector2(-72, 8)
-
-[node name="PlatformIce5" parent="Platforms" instance=ExtResource("3_c2wm7")]
-position = Vector2(-24, 8)
-
-[node name="PlatformIce6" parent="Platforms" instance=ExtResource("3_c2wm7")]
-position = Vector2(24, 8)
-
-[node name="PlatformIce7" parent="Platforms" instance=ExtResource("3_c2wm7")]
-position = Vector2(72, 8)
-
-[node name="PlatformIce8" parent="Platforms" instance=ExtResource("3_c2wm7")]
-position = Vector2(120, 8)
-
-[node name="PlatformIce9" parent="Platforms" instance=ExtResource("3_c2wm7")]
-position = Vector2(168, 8)
-
-[node name="PlatformIce10" parent="Platforms" instance=ExtResource("3_c2wm7")]
-position = Vector2(216, 8)
-
 [node name="SpawnPoints" type="Node" parent="."]
 
 [node name="SpawnPoint1" type="Marker2D" parent="SpawnPoints"]
@@ -113,9 +82,14 @@ position = Vector2(124, -39)
 position = Vector2(172, -39)
 
 [node name="EliminationZone" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, 34)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EliminationZone"]
 shape = SubResource("WorldBoundaryShape2D_fkg0o")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAD//wAAAAABAAAAAAD+/wAAAAABAAAAAAD9/wAAAAABAAAAAAD8/wAAAAABAAAAAAD7/wAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAGAAAAAAABAAAAAAD6/wAAAAABAAAAAAD5/wAAAAABAAAAAAD4/wAAAAABAAAAAAD3/wAAAAABAAAAAAD2/wAAAAABAAAAAAD1/wAAAAABAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAABAAAAAAAKAAAAAAABAAAAAAALAAAAAAABAAAAAAD0/wAAAAABAAAAAAA=")
+tile_set = ExtResource("3_fkg0o")
