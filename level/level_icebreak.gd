@@ -3,11 +3,14 @@ extends Node2D
 # Entities of level
 const PLAYER_SCENE = preload("res://entity/player_icebreak.tscn")
 
+var game_started: bool = false
+
 ## Server-side
 var player_scores: Dictionary[int, int] = {}
 var player_numbers: Dictionary[int, int] = {}
 var player_nodes: Array = []
 var player_can_collide: Dictionary[int, bool] = {}
+var player_alive: Dictionary[int, bool] = {}
 
 ## Both server and client
 const HUD_SCORE = preload("res://gui/hud/hud_score.tscn")
@@ -43,6 +46,8 @@ func _physics_process(_delta: float) -> void:
 		start_timer_label.visible = false
 	
 	if multiplayer.is_server():
+		if not game_started: return
+		
 		# Player collision with ice checks
 		for player: CharacterBody2D in player_nodes:
 			var peer_id = int(player.name)
@@ -62,11 +67,13 @@ func _physics_process(_delta: float) -> void:
 					if tile_id == 0:
 						tile_map_layer.set_cell(cell_coords, destroyed_tile_id)
 					
+					_on_player_scored(peer_id)
+					
 					player_can_collide[peer_id] = false
 					last_collision = latest_collision
 
 func _on_game_start() -> void:
-	pass
+	game_started = true
 
 func _on_player_scored(peer_id: int) -> void:
 	if not player_scores.has(peer_id): return
@@ -78,6 +85,11 @@ func _on_player_eliminated(player_body) -> void:
 	player_body.set_deferred("linear_damp", 100)
 	player_body.set_deferred("angular_damp", 10)
 	player_body.set_deferred("gravity_scale", 0.3)
+	player_alive[int(player_body.name)] = false
+	for status in player_alive.values():
+		if status == true:
+			return
+	# Everyone is eliminated Reload game
 
 func server_setup_player(peer_id: int) -> void:
 	if has_node(str(peer_id)): return # Early exit
@@ -147,7 +159,6 @@ func setup_player_score(peer_id: int) -> void:
 
 @rpc("authority", "call_local", "reliable")
 func update_score(peer_id: int, amount: int) -> void:
-	Helper.log("Updating score data and GUI...")
 	player_scores[peer_id] = amount
 	if not multiplayer.is_server():
 		var GUI_player_score_scene = GUI_player_score_container.get_node(str(peer_id))
