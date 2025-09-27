@@ -37,7 +37,7 @@ func _client_requests() -> void:
 
 @rpc("any_peer", "unreliable_ordered")
 func move(client_direction) -> void:
-	if multiplayer.is_server():
+	if multiplayer && multiplayer.is_server():
 		direction = client_direction
 
 

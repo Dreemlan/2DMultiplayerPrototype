@@ -72,6 +72,7 @@ func _physics_process(_delta: float) -> void:
 					player_can_collide[peer_id] = false
 					last_collision = latest_collision
 
+
 func _on_game_start() -> void:
 	game_started = true
 
@@ -82,10 +83,10 @@ func _on_player_scored(peer_id: int) -> void:
 	rpc("update_score", peer_id, new_score)
 
 func _on_player_eliminated(player_body) -> void:
-	player_body.set_deferred("linear_damp", 100)
-	player_body.set_deferred("angular_damp", 10)
-	player_body.set_deferred("gravity_scale", 0.3)
-	player_alive[int(player_body.name)] = false
+	var peer_id = int(player_body.name)
+	player_alive[peer_id] = false
+	player_nodes.erase(player_body)
+	rpc("despawn_player", peer_id)
 	for status in player_alive.values():
 		if status == true:
 			return
@@ -115,6 +116,7 @@ func move_player_to_spawn(peer_id: int) -> void:
 	var spawn_point = spawn_points[player_numbers[peer_id]]
 	player_node.global_position = spawn_point.global_position
 
+
 @rpc("authority", "reliable")
 func spawn_player(peer_id: int) -> void:
 	var player_node_name = str(peer_id)
@@ -128,6 +130,17 @@ func spawn_player(peer_id: int) -> void:
 	if multiplayer.is_server():
 		for peer in multiplayer.get_peers():
 			rpc("spawn_player", peer)
+
+@rpc("authority", "call_local", "reliable")
+func despawn_player(peer_id: int) -> void:
+	var player_node_name = str(peer_id)
+	if not has_node(player_node_name): return
+	
+	Helper.log("Despawning player %s" % peer_id)
+	
+	var player = get_node(player_node_name)
+	
+	remove_child(player)
 
 @rpc("any_peer", "reliable")
 func get_player_score(peer_id: int) -> int:

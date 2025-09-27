@@ -24,7 +24,7 @@ func _physics_process(_delta: float) -> void:
 
 @rpc("authority", "unreliable")
 func sync_transform(pos, rot) -> void:
-	if multiplayer.is_server():
+	if multiplayer && multiplayer.is_server():
 		pass
 	else:
 		# Update client position and rotation to match server
