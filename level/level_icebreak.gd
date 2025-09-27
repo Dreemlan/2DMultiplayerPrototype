@@ -76,6 +76,11 @@ func _physics_process(_delta: float) -> void:
 func _on_game_start() -> void:
 	game_started = true
 
+func _on_game_finished() -> void:
+	Helper.log("Finishing level...")
+	game_started = false
+	queue_free()
+
 func _on_player_scored(peer_id: int) -> void:
 	if not player_scores.has(peer_id): return
 	var current_score = player_scores[peer_id]
@@ -83,6 +88,7 @@ func _on_player_scored(peer_id: int) -> void:
 	rpc("update_score", peer_id, new_score)
 
 func _on_player_eliminated(player_body) -> void:
+	Helper.log("%s has been eliminated" % player_body.name)
 	var peer_id = int(player_body.name)
 	player_alive[peer_id] = false
 	player_nodes.erase(player_body)
@@ -90,11 +96,13 @@ func _on_player_eliminated(player_body) -> void:
 	for status in player_alive.values():
 		if status == true:
 			return
-	# Everyone is eliminated Reload game
+	# Everyone is eliminated, load next level
+	_on_game_finished()
 
 func server_setup_player(peer_id: int) -> void:
 	if has_node(str(peer_id)): return # Early exit
 	# Server-side only
+	player_alive[peer_id] = true
 	player_can_collide[peer_id] = true
 	server_setup_player_number(peer_id)
 	spawn_player(peer_id)
