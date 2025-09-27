@@ -1,9 +1,12 @@
 extends Node
 
-const MINIGAME_LOBBY = preload("res://minigame/minigame_lobby.tscn")
-const MINIGAME_ICE_BREAK = preload("res://minigame/minigame_ice_break.tscn")
+const LEVEL_LOBBY = preload("res://level/level_lobby.tscn")
+const LEVEL_ICE_BREAK = preload("res://level/level_icebreak.tscn")
 
-var minigames = [ MINIGAME_ICE_BREAK ]
+var levels = [ LEVEL_ICE_BREAK ]
 
 func _ready() -> void:
-	add_child(MINIGAME_LOBBY.instantiate())
+	
+	if get_child_count() > 0: return
+	
+	add_child(LEVEL_LOBBY.instantiate())
