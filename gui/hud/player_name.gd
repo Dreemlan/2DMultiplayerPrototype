@@ -8,4 +8,4 @@ func _ready() -> void:
 	top_level = true
 
 func _physics_process(delta: float) -> void:
-	global_position = lerp(global_position, player_node.global_position, 30.0 * delta)
+	global_position = lerp(global_position, player_node.global_position, 6.0 * delta)
