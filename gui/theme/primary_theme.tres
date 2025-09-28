@@ -5,6 +5,7 @@
 [resource]
 Button/font_sizes/font_size = 19
 Button/fonts/font = ExtResource("1_bf01x")
+Label/fonts/font = ExtResource("1_bf01x")
 LineEdit/font_sizes/font_size = 19
 LineEdit/fonts/font = ExtResource("1_bf01x")
 MarginContainer/constants/margin_bottom = 10

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2833f4u1eu1q"]
+[gd_scene load_steps=3 format=3 uid="uid://c2833f4u1eu1q"]
 
 [ext_resource type="Script" uid="uid://oofak0sfuwdb" path="res://gui/hud/debug_info.gd" id="1_1df5e"]
+[ext_resource type="Theme" uid="uid://d17mk31idftvd" path="res://gui/theme/primary_theme.tres" id="2_t7mat"]
 
 [node name="DebugInfo" type="CanvasLayer"]
 script = ExtResource("1_1df5e")
@@ -8,6 +9,7 @@ script = ExtResource("1_1df5e")
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+theme = ExtResource("2_t7mat")
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
