@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d17mk31idftvd"]
+
+[ext_resource type="FontFile" uid="uid://8adxwhx8wajc" path="res://font/Jersey10-Regular.ttf" id="1_bf01x"]
+
+[resource]
+Button/font_sizes/font_size = 19
+Button/fonts/font = ExtResource("1_bf01x")
+LineEdit/font_sizes/font_size = 19
+LineEdit/fonts/font = ExtResource("1_bf01x")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
