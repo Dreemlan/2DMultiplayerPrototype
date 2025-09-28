@@ -19,6 +19,12 @@ config/icon="res://icon.svg"
 
 Helper="*res://global/helper.gd"
 Multiplayer="*res://multiplayer/multiplayer.gd"
+PlayerManager="*res://global/player_manager.gd"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=480
 
 [input]
 
