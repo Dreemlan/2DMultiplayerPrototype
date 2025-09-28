@@ -20,6 +20,7 @@ const HUD_SCORE = preload("res://gui/hud/hud_score.tscn")
 @onready var GUI_player_score_container: HBoxContainer = $HUD/Control/PlayerScoreContainer
 @onready var spawn_points: Array = get_node("SpawnPoints").get_children()
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
+@onready var timer: Timer = $Timer
 
 
 func _ready() -> void:
@@ -59,6 +60,11 @@ func _physics_process(_delta: float) -> void:
 					last_collision = latest_collision
 
 
+func _on_all_players_ready() -> void:
+	if not timer.timeout.is_connected(_on_game_start):
+		timer.timeout.connect(_on_game_start)
+	timer.start()
+
 func _on_game_start() -> void:
 	game_started = true
 
@@ -84,8 +90,7 @@ func server_setup_player(peer_id: int) -> void:
 	
 	# Check if game should start
 	if player_nodes.size() == multiplayer.get_peers().size():
-		Helper.log("All players have loaded and are ready")
-		_on_game_start()
+		_on_all_players_ready()
 
 func server_setup_player_number(peer_id: int) -> void:
 	if multiplayer.is_server():

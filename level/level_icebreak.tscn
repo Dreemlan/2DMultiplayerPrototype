@@ -8,6 +8,13 @@
 [node name="LevelIceBreak" type="Node2D"]
 script = ExtResource("1_i7esh")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="HUD"]
@@ -27,9 +34,6 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
 
 [node name="SpawnPoints" type="Node" parent="."]
 
@@ -58,7 +62,6 @@ position = Vector2(124, -39)
 position = Vector2(172, -39)
 
 [node name="EliminationZone" type="Area2D" parent="."]
-visible = false
 position = Vector2(0, 34)
 collision_layer = 0
 collision_mask = 2
