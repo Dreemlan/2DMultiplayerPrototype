@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://qrdc2dstxdfy"]
+[gd_scene load_steps=4 format=3 uid="uid://qrdc2dstxdfy"]
 
 [ext_resource type="PackedScene" uid="uid://c2833f4u1eu1q" path="res://gui/hud/debug_info.tscn" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cy7oyfdth80jh" path="res://global/level_manager.tscn" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://dqyxdb8yn0ubi" path="res://level/level_icebreak.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bud836iugnnjy" path="res://gui/menu/main_menu.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node"]
@@ -14,5 +13,3 @@ layer = 3
 layer = 2
 
 [node name="LevelManager" parent="." instance=ExtResource("2_h2yge")]
-
-[node name="LevelIceBreak" parent="LevelManager" instance=ExtResource("3_1bvp3")]

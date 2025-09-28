@@ -1,19 +1,13 @@
-[gd_scene load_steps=4 format=4 uid="uid://dqyxdb8yn0ubi"]
+[gd_scene load_steps=5 format=4 uid="uid://dqyxdb8yn0ubi"]
 
 [ext_resource type="Script" uid="uid://dg2wkwuqkhum6" path="res://level/level_icebreak_v2.gd" id="1_d4jm2"]
+[ext_resource type="PackedScene" uid="uid://bncjbgsa52wsn" path="res://gui/hud/level_start_timer.tscn" id="2_fkg0o"]
 [ext_resource type="TileSet" uid="uid://cvkcblkg6dbm0" path="res://art/tileset/tileset_ice.tres" id="3_fkg0o"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fkg0o"]
 
 [node name="LevelIceBreak" type="Node2D"]
 script = ExtResource("1_d4jm2")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -34,6 +28,8 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
+
+[node name="LevelStartTimer" parent="HUD/Control/PlayerScoreContainer" instance=ExtResource("2_fkg0o")]
 
 [node name="SpawnPoints" type="Node" parent="."]
 
@@ -61,6 +57,13 @@ position = Vector2(124, -39)
 [node name="SpawnPoint8" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(172, -39)
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAD//wAAAAABAAAAAAD+/wAAAAABAAAAAAD9/wAAAAABAAAAAAD8/wAAAAABAAAAAAD7/wAAAAABAAAAAAD6/wAAAAABAAAAAAD5/wAAAAABAAAAAAD4/wAAAAABAAAAAAD2/wAAAAABAAAAAAD1/wAAAAABAAAAAAAJAAAAAAABAAAAAAAKAAAAAAABAAAAAAALAAAAAAACAAAAAAD0/wAAAAAAAAAAAAD0/wEAAAAAAAIAAAD1/wEAAAABAAIAAAD2/wEAAAABAAIAAAD4/wEAAAABAAIAAAD5/wEAAAABAAIAAAD6/wEAAAABAAIAAAD7/wEAAAABAAIAAAD8/wEAAAABAAIAAAD9/wEAAAABAAIAAAD+/wEAAAABAAIAAAAAAAEAAAABAAIAAAD//wEAAAABAAIAAAAIAAEAAAABAAIAAAAJAAEAAAABAAIAAAAKAAEAAAABAAIAAAALAAEAAAACAAIAAAAIAAAAAAABAAAAAAAGAAAAAAABAAAAAAAFAAAAAAABAAAAAAAEAAAAAAABAAAAAAADAAAAAAABAAAAAAACAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAEAAAABAAIAAAACAAEAAAABAAIAAAADAAEAAAABAAIAAAAEAAEAAAABAAIAAAAFAAEAAAABAAIAAAAGAAEAAAABAAIAAAAHAAAAAAABAAAAAAAHAAEAAAABAAIAAAD3/wAAAAABAAAAAAD3/wEAAAABAAIAAAA=")
+tile_set = ExtResource("3_fkg0o")
+
 [node name="EliminationZone" type="Area2D" parent="."]
 position = Vector2(0, 34)
 collision_layer = 0
@@ -68,7 +71,3 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EliminationZone"]
 shape = SubResource("WorldBoundaryShape2D_fkg0o")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAD//wAAAAABAAAAAAD+/wAAAAABAAAAAAD9/wAAAAABAAAAAAD8/wAAAAABAAAAAAD7/wAAAAABAAAAAAD6/wAAAAABAAAAAAD5/wAAAAABAAAAAAD4/wAAAAABAAAAAAD2/wAAAAABAAAAAAD1/wAAAAABAAAAAAAJAAAAAAABAAAAAAAKAAAAAAABAAAAAAALAAAAAAACAAAAAAD0/wAAAAAAAAAAAAD0/wEAAAAAAAIAAAD1/wEAAAABAAIAAAD2/wEAAAABAAIAAAD4/wEAAAABAAIAAAD5/wEAAAABAAIAAAD6/wEAAAABAAIAAAD7/wEAAAABAAIAAAD8/wEAAAABAAIAAAD9/wEAAAABAAIAAAD+/wEAAAABAAIAAAAAAAEAAAABAAIAAAD//wEAAAABAAIAAAAIAAEAAAABAAIAAAAJAAEAAAABAAIAAAAKAAEAAAABAAIAAAALAAEAAAACAAIAAAAIAAAAAAABAAAAAAAGAAAAAAABAAAAAAAFAAAAAAABAAAAAAAEAAAAAAABAAAAAAADAAAAAAABAAAAAAACAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAEAAAABAAIAAAACAAEAAAABAAIAAAADAAEAAAABAAIAAAAEAAEAAAABAAIAAAAFAAEAAAABAAIAAAAGAAEAAAABAAIAAAAHAAAAAAABAAAAAAAHAAEAAAABAAIAAAD3/wAAAAABAAAAAAD3/wEAAAABAAIAAAA=")
-tile_set = ExtResource("3_fkg0o")
