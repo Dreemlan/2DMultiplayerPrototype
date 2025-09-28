@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dkaop87dyxxox"]
 
-[ext_resource type="Texture2D" uid="uid://cfwuc7tutc1yg" path="res://icon.svg" id="1_drctx"]
-[ext_resource type="PackedScene" uid="uid://cf3tc7tdnuyni" path="res://gui/hud/player_name_label.tscn" id="2_2nha7"]
-[ext_resource type="PackedScene" uid="uid://cyoajpyvxaaq" path="res://component/movement/player_movement_platformer.tscn" id="3_1afbj"]
+[ext_resource type="Texture2D" uid="uid://cfwuc7tutc1yg" path="res://icon.svg" id="1_8eovi"]
+[ext_resource type="PackedScene" uid="uid://cf3tc7tdnuyni" path="res://gui/hud/player_name_label.tscn" id="2_7ol4w"]
+[ext_resource type="PackedScene" uid="uid://cyoajpyvxaaq" path="res://component/movement/player_movement_platformer.tscn" id="3_x4hbc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hsefk"]
 size = Vector2(16, 16)
@@ -13,11 +13,11 @@ collision_mask = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.125681, 0.125681)
-texture = ExtResource("1_drctx")
+texture = ExtResource("1_8eovi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hsefk")
 
-[node name="PlayerNameLabel" parent="." instance=ExtResource("2_2nha7")]
+[node name="PlayerNameLabel" parent="." instance=ExtResource("2_7ol4w")]
 
-[node name="PlayerMovementPlatformer" parent="." instance=ExtResource("3_1afbj")]
+[node name="PlayerMovementPlatformer" parent="." instance=ExtResource("3_x4hbc")]

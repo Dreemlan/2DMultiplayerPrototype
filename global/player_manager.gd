@@ -1,7 +1,5 @@
 extends Node
 
-const SYNC_TRANSFORM = preload("uid://jnlnvsgv7t3m")
-
 @onready var level_manager: Node = get_node("/root/Main/LevelManager")
 
 
@@ -25,7 +23,3 @@ func despawn_player(peer_id: int, level_name: String) -> void:
 	var player_node = level.get_node(player_node_name)
 	Helper.log("Despawning player %s" % peer_id)
 	player_node.queue_free()
-
-
-func add_sync_component(node: Node) -> void:
-	node.add_child(SYNC_TRANSFORM.instantiate())
