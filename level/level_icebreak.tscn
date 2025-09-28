@@ -1,21 +1,12 @@
-[gd_scene load_steps=5 format=4 uid="uid://dqyxdb8yn0ubi"]
+[gd_scene load_steps=4 format=4 uid="uid://dqyxdb8yn0ubi"]
 
 [ext_resource type="Script" uid="uid://d3h3vrrt00xlw" path="res://level/level_icebreak.gd" id="1_i7esh"]
 [ext_resource type="TileSet" uid="uid://cvkcblkg6dbm0" path="res://art/tileset/tileset_ice.tres" id="3_fkg0o"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_fug02"]
-font_size = 48
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fkg0o"]
 
 [node name="LevelIceBreak" type="Node2D"]
 script = ExtResource("1_i7esh")
-
-[node name="StartTimer" type="Timer" parent="."]
-process_callback = 0
-wait_time = 3.0
-one_shot = true
-autostart = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -36,20 +27,6 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
-
-[node name="StartTimerLabel" type="Label" parent="HUD/Control"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = 125.0
-offset_right = 20.0
-offset_bottom = 192.0
-grow_horizontal = 2
-text = "5"
-label_settings = SubResource("LabelSettings_fug02")
-horizontal_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)

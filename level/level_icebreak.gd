@@ -3,47 +3,33 @@ extends Node2D
 # Entities of level
 const PLAYER_SCENE = preload("res://entity/player_icebreak.tscn")
 
-var game_started: bool = false
+@onready var game_started: bool = false
 
 ## Server-side
 var player_scores: Dictionary[int, int] = {}
 var player_numbers: Dictionary[int, int] = {}
 var player_nodes: Array = []
 var player_can_collide: Dictionary[int, bool] = {}
-var player_alive: Dictionary[int, bool] = {}
 
 ## Both server and client
 const HUD_SCORE = preload("res://gui/hud/hud_score.tscn")
 
-@onready var main = get_parent()
+@onready var level_manager = get_parent()
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var elimination_zone: Area2D = $EliminationZone
 @onready var GUI_player_score_container: HBoxContainer = $HUD/Control/PlayerScoreContainer
 @onready var spawn_points: Array = get_node("SpawnPoints").get_children()
-@onready var start_timer: Timer = $StartTimer
-@onready var start_timer_label: Label = $HUD/Control/StartTimerLabel
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 
 
 func _ready() -> void:
-	# Set camera as current
-	camera_2d.make_current()
-	
 	if multiplayer.is_server():
-		# Game logic
-		start_timer.timeout.connect(_on_game_start)
 		elimination_zone.body_entered.connect(_on_player_eliminated)
-		# Networking
 		multiplayer.peer_connected.connect(server_setup_player)
 		for peer_id: int in multiplayer.get_peers():
 			server_setup_player(peer_id)
 
 func _physics_process(_delta: float) -> void:
-	# Game start timer
-	var start_timer_left: int = int(start_timer.get_time_left())
-	start_timer_label.text = str(start_timer_left)
-	if start_timer_left == 0:
-		start_timer_label.visible = false
 	
 	if multiplayer.is_server():
 		if not game_started: return
@@ -76,11 +62,6 @@ func _physics_process(_delta: float) -> void:
 func _on_game_start() -> void:
 	game_started = true
 
-func _on_game_finished() -> void:
-	Helper.log("Finishing level...")
-	game_started = false
-	queue_free()
-
 func _on_player_scored(peer_id: int) -> void:
 	if not player_scores.has(peer_id): return
 	var current_score = player_scores[peer_id]
@@ -90,25 +71,21 @@ func _on_player_scored(peer_id: int) -> void:
 func _on_player_eliminated(player_body) -> void:
 	Helper.log("%s has been eliminated" % player_body.name)
 	var peer_id = int(player_body.name)
-	player_alive[peer_id] = false
-	player_nodes.erase(player_body)
 	rpc("despawn_player", peer_id)
-	for status in player_alive.values():
-		if status == true:
-			return
-	# Everyone is eliminated, load next level
-	_on_game_finished()
 
 func server_setup_player(peer_id: int) -> void:
 	if has_node(str(peer_id)): return # Early exit
-	# Server-side only
-	player_alive[peer_id] = true
+	Helper.log("Setting up player %s" % peer_id)
 	player_can_collide[peer_id] = true
 	server_setup_player_number(peer_id)
 	spawn_player(peer_id)
 	move_player_to_spawn(peer_id)
-	# Both server and client
 	rpc("setup_player_score", peer_id)
+	
+	# Check if game should start
+	if player_nodes.size() == multiplayer.get_peers().size():
+		Helper.log("All players have loaded and are ready")
+		_on_game_start()
 
 func server_setup_player_number(peer_id: int) -> void:
 	if multiplayer.is_server():
@@ -133,6 +110,7 @@ func spawn_player(peer_id: int) -> void:
 	var player = PLAYER_SCENE.instantiate()
 	player.name = player_node_name
 	add_child(player)
+	player.get_node("SyncTransform").syncing = true
 	player_nodes.append(player)
 	
 	if multiplayer.is_server():
@@ -141,22 +119,11 @@ func spawn_player(peer_id: int) -> void:
 
 @rpc("authority", "call_local", "reliable")
 func despawn_player(peer_id: int) -> void:
+	#Helper.log("Despawning player %s" % peer_id)
 	var player_node_name = str(peer_id)
 	if not has_node(player_node_name): return
-	
-	Helper.log("Despawning player %s" % peer_id)
-	
 	var player = get_node(player_node_name)
-	
 	remove_child(player)
-
-@rpc("any_peer", "reliable")
-func get_player_score(peer_id: int) -> int:
-	return player_scores[peer_id]
-
-@rpc("any_peer", "reliable")
-func get_player_number(peer_id: int) -> int:
-	return player_numbers[peer_id]
 
 @rpc("authority", "reliable")
 func send_clients_player_numbers(server_player_numbers: Dictionary) -> void:

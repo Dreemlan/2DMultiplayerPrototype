@@ -2,19 +2,19 @@ extends Node
 
 @onready var node = get_parent()
 
+var syncing: bool = false
+
 
 func _ready() -> void:
 	if multiplayer.is_server():
 		pass
 	else:
-		if node is RigidBody2D:
-			# Disable client physics
-			node.freeze_mode = RigidBody2D.FREEZE_MODE_KINEMATIC
-			node.freeze = true
-			node.gravity_scale = 0.0
+		pass
 
 
 func _physics_process(_delta: float) -> void:
+	if not syncing: return
+	
 	if multiplayer.is_server():
 		# Send clients position and rotation
 		rpc("sync_transform", node.global_position, node.global_rotation)
