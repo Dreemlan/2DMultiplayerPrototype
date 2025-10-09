@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://tq3clc54pcvu"]
+
+[ext_resource type="Texture2D" uid="uid://cfwuc7tutc1yg" path="res://icon.svg" id="1_fqitv"]
+[ext_resource type="PackedScene" uid="uid://cf3tc7tdnuyni" path="res://gui/hud/player_name_label.tscn" id="2_p78cf"]
+[ext_resource type="PackedScene" uid="uid://cyoajpyvxaaq" path="res://component/movement/player_movement_platformer.tscn" id="3_8tu7r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hsefk"]
+size = Vector2(16, 16)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.125681, 0.125681)
+texture = ExtResource("1_fqitv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hsefk")
+
+[node name="PlayerNameLabel" parent="." instance=ExtResource("2_p78cf")]
+
+[node name="PlayerMovementPlatformer" parent="." instance=ExtResource("3_8tu7r")]

@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://ojwx1kpia7rs"]
+[gd_scene load_steps=4 format=3 uid="uid://ojwx1kpia7rs"]
 
 [ext_resource type="Script" uid="uid://binonj7m0ewyh" path="res://gui/hud/lobby_player_card.gd" id="1_7xk0r"]
 [ext_resource type="Texture2D" uid="uid://cfwuc7tutc1yg" path="res://icon.svg" id="1_peygk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7xk0r"]
+font_color = Color(1, 0, 0.29803923, 1)
 
 [node name="LobbyPlayerCard" type="VBoxContainer"]
 offset_right = 128.0
@@ -25,4 +28,11 @@ texture = ExtResource("1_peygk")
 unique_name_in_owner = true
 layout_mode = 2
 text = "Display Name"
+horizontal_alignment = 1
+
+[node name="LabelReadyStatus" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Not Ready"
+label_settings = SubResource("LabelSettings_7xk0r")
 horizontal_alignment = 1
