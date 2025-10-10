@@ -42,12 +42,15 @@ func _on_peer_disconnect(peer_id: int) -> void:
 	Helper.log("%s disconnected" % peer_id)
 
 
+# Called from main_menu.gd when player connects
 @rpc("any_peer", "reliable")
-func server_register_peer(display_name) -> void:
-	var peer_id: int = multiplayer.get_remote_sender_id()
+func register_peer_name(peer_id: int, display_name: String) -> void:
 	if peer_display_names.values().has(display_name):
 		Helper.log("Peer already registered")
 		display_name += "Noob"
 	Helper.log("Registering %s as %s" % [peer_id, display_name])
 	peer_display_names[peer_id] = display_name
 	emit_signal("peer_registered", peer_id)
+	
+	if multiplayer.is_server():
+		rpc("register_peer_name", peer_id, display_name)

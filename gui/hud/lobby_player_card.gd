@@ -1,7 +1,10 @@
 extends VBoxContainer
 
-func _ready() -> void:
-	%LabelDisplayName.text = Multiplayer.peer_display_names[int(self.name)]
+#func _ready() -> void:
+	#%LabelDisplayName.text = Multiplayer.peer_display_names[int(self.name)]
+
+func set_card_name(new_name: String) -> void:
+	%LabelDisplayName.text = new_name
 
 func update_ready_status(new_status: bool) -> void:
 	if new_status == true:

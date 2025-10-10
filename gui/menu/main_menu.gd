@@ -28,5 +28,5 @@ func _on_button_quit_pressed() -> void:
 
 
 func _on_connect_to_server() -> void:
-	Multiplayer.server_register_peer.rpc_id(1, client_display_name)
+	Multiplayer.register_peer_name.rpc_id(1, multiplayer.get_unique_id(), client_display_name)
 	hide()
