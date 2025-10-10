@@ -101,7 +101,6 @@ layout_mode = 2
 alignment = 2
 
 [node name="PlayerCardContainer" type="HBoxContainer" parent="HUD/Control/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 

@@ -6,6 +6,7 @@ var ready_statuses: Dictionary[int, bool] = {}
 
 @onready var area_ready: Area2D = $AreaReady
 @onready var level_lobby_timer: Timer = $HUD/Control/LevelLobbyTimer
+@onready var player_card_container: HBoxContainer = $HUD/Control/MarginContainer/VBoxContainer/PlayerCardContainer
 
 func _ready() -> void:
 	if multiplayer.is_server():
@@ -49,18 +50,18 @@ func all_players_ready() -> bool:
 
 @rpc("authority", "call_local", "reliable")
 func add_player_card(peer_id: int, display_name: String) -> void:
-	if %PlayerCardContainer.has_node(str(peer_id)): return
+	if player_card_container.has_node(str(peer_id)): return
 	
 	var inst = LOBBY_PLAYER_CARD.instantiate()
 	inst.name = str(peer_id)
+	player_card_container.add_child(inst)
 	inst.set_card_name(display_name)
-	%PlayerCardContainer.add_child(inst)
 	
 	Helper.log("Added player card for peer %d (%s)" % [peer_id, display_name])
 
 @rpc("authority", "call_local", "reliable")
 func update_player_card_ready(peer_id: int, status: bool) -> void:
-	var player_card = %PlayerCardContainer.get_node(str(peer_id))
+	var player_card = player_card_container.get_node(str(peer_id))
 	player_card.update_ready_status(status)
 
 @rpc("authority", "call_local", "reliable")
