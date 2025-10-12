@@ -27,6 +27,10 @@ ComponentManager="*res://global/component_manager.gd"
 window/size/viewport_width=640
 window/size/viewport_height=480
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+
 [input]
 
 move_up={

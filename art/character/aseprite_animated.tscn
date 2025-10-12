@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dtfr6en22qmph"]
+
+[node name="AsepriteAnimated" type="AnimatedSprite2D"]
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": true,
+"output_section": false,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://art/character/aseprite_animation_test.ase",
+"source_uid": 6770992183861177352
+}
