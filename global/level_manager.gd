@@ -1,10 +1,8 @@
 extends Node
 
 const LEVEL_LOBBY = preload("res://level/level_lobby.tscn")
-const LEVEL_ICE_BREAK = preload("res://level/level_icebreak.tscn")
 
 var active_level: String = "level_lobby"
-var levels = [ LEVEL_ICE_BREAK ]
 
 func _ready() -> void:
 	if multiplayer.is_server():
@@ -20,6 +18,19 @@ func server_load_level() -> void:
 func _on_peer_connect(peer_id: int) -> void:
 	if multiplayer.is_server():
 		rpc_id(peer_id, "client_load_level", active_level)
+
+
+@rpc("authority", "reliable")
+func load_level(level_name: String) -> void:
+	for p in PlayerManager.get_children():
+		PlayerManager.despawn_player(int(p.name))
+	get_child(0).get_tree().change_scene_to_file("res://level/level_icebreak.tscn")
+	#var scene = load("res://level/%s.tscn" % level_name)
+	#var inst = scene.instantiate()
+	#add_child(inst)
+	
+	if multiplayer.is_server():
+		rpc("load_level", level_name)
 
 @rpc("authority", "reliable")
 func client_load_level(level_name: String) -> void:

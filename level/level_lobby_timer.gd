@@ -5,7 +5,7 @@ signal timer_finished
 
 func _ready() -> void:
 	one_shot = true
-	wait_time = 5.0
+	wait_time = 1.0
 	timeout.connect(_on_timer_finished)
 
 func _on_timer_finished() -> void:

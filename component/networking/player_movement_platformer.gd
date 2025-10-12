@@ -7,7 +7,6 @@ var direction
 
 @onready var player = get_parent() as CharacterBody2D
 
-
 func _physics_process(delta: float) -> void:
 	if multiplayer.is_server():
 		_server_simulation(delta)

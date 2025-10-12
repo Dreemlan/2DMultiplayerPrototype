@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cfwuc7tutc1yg" path="res://icon.svg" id="1_8eovi"]
 [ext_resource type="PackedScene" uid="uid://cf3tc7tdnuyni" path="res://gui/hud/player_name_label.tscn" id="2_7ol4w"]
-[ext_resource type="PackedScene" uid="uid://cyoajpyvxaaq" path="res://component/movement/player_movement_platformer.tscn" id="3_x4hbc"]
+[ext_resource type="PackedScene" uid="uid://cyoajpyvxaaq" path="res://component/networking/player_movement_platformer.tscn" id="3_x4hbc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hsefk"]
 size = Vector2(16, 16)

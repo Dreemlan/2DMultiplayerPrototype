@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://dqyxdb8yn0ubi"]
 
-[ext_resource type="Script" uid="uid://dg2wkwuqkhum6" path="res://level/level_icebreak_v2.gd" id="1_d4jm2"]
+[ext_resource type="Script" uid="uid://dg2wkwuqkhum6" path="res://level/level_icebreak.gd" id="1_d4jm2"]
 [ext_resource type="PackedScene" uid="uid://bncjbgsa52wsn" path="res://gui/hud/level_start_timer.tscn" id="2_fkg0o"]
 [ext_resource type="TileSet" uid="uid://cvkcblkg6dbm0" path="res://art/tileset/tileset_ice.tres" id="3_fkg0o"]
 

@@ -54,12 +54,12 @@ scale = Vector2(0.104846, 1.32449)
 position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_8jbh6")
 
-[node name="AreaReady" type="Area2D" parent="."]
+[node name="AreaReadyLevelIceBreak" type="Area2D" parent="."]
 position = Vector2(-82, 32)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaReady"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaReadyLevelIceBreak"]
 shape = SubResource("RectangleShape2D_6v813")
 debug_color = Color(0.820766, 0.40283853, 7.70092e-07, 0.41960785)
 
