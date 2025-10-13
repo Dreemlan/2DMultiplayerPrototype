@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://tq3clc54pcvu"]
 
-[ext_resource type="Texture2D" uid="uid://cfwuc7tutc1yg" path="res://icon.svg" id="1_fqitv"]
-[ext_resource type="PackedScene" uid="uid://cf3tc7tdnuyni" path="res://gui/hud/player_name_label.tscn" id="2_p78cf"]
-[ext_resource type="PackedScene" uid="uid://cyoajpyvxaaq" path="res://component/networking/player_movement_platformer.tscn" id="3_8tu7r"]
+[ext_resource type="Texture2D" uid="uid://c7e2b43grki6f" path="res://art/character/chicken.png" id="1_fqitv"]
+[ext_resource type="PackedScene" uid="uid://cf3tc7tdnuyni" path="res://gui/hud_player_displayname.tscn" id="2_p78cf"]
+[ext_resource type="PackedScene" uid="uid://cyoajpyvxaaq" path="res://component/networking/component_movement_platformer.tscn" id="3_8tu7r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hsefk"]
 size = Vector2(16, 16)

@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://custdjwi4dbmi"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5dry"]
-size = Vector2(32, 16)
-
-[node name="PlatformGrass" type="StaticBody2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_w5dry")

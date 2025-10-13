@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ojwx1kpia7rs"]
 
-[ext_resource type="Script" uid="uid://binonj7m0ewyh" path="res://gui/hud/lobby_player_card.gd" id="1_7xk0r"]
+[ext_resource type="Script" uid="uid://binonj7m0ewyh" path="res://gui/hud_lobby_player_card.gd" id="1_7xk0r"]
 [ext_resource type="Texture2D" uid="uid://cfwuc7tutc1yg" path="res://icon.svg" id="1_peygk"]
 
 [node name="LobbyPlayerCard" type="VBoxContainer"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://chbbbpinr0r2m"]
+
+[ext_resource type="Script" uid="uid://cd8164d32m1e1" path="res://level/level_lobby_ready_area.gd" id="1_v4cxs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yocxa"]
+
+[node name="LevelLobbyReadyArea" type="Node2D"]
+script = ExtResource("1_v4cxs")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_yocxa")
+debug_color = Color(0, 0.65017176, 0.124375604, 0.41960785)

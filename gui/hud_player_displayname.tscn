@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cf3tc7tdnuyni"]
 
-[ext_resource type="Script" uid="uid://cv55tvltmc7br" path="res://gui/hud/player_name.gd" id="1_8c628"]
+[ext_resource type="Script" uid="uid://cv55tvltmc7br" path="res://gui/hud_player_displayname.gd" id="1_8c628"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8c628"]
 font_size = 9

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bncjbgsa52wsn"]
 
-[ext_resource type="Script" uid="uid://ce8biydhoxcqj" path="res://gui/hud/level_start_timer.gd" id="1_bu6ig"]
+[ext_resource type="Script" uid="uid://ce8biydhoxcqj" path="res://gui/hud_icebreak_timer.gd" id="1_bu6ig"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d4jm2"]
 font_size = 128

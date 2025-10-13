@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2833f4u1eu1q"]
 
-[ext_resource type="Script" uid="uid://oofak0sfuwdb" path="res://gui/hud/debug_info.gd" id="1_1df5e"]
-[ext_resource type="Theme" uid="uid://d17mk31idftvd" path="res://gui/theme/primary_theme.tres" id="2_t7mat"]
+[ext_resource type="Script" uid="uid://oofak0sfuwdb" path="res://gui/hud_general_debug.gd" id="1_1df5e"]
+[ext_resource type="Theme" uid="uid://d17mk31idftvd" path="res://gui/theme_primary.tres" id="2_t7mat"]
 
 [node name="DebugInfo" type="CanvasLayer"]
 script = ExtResource("1_1df5e")

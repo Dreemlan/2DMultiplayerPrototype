@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dms1txqocx2vk"]
 
-[ext_resource type="Script" uid="uid://syw6v4jgpqtd" path="res://gui/hud/hud_score.gd" id="1_7bndj"]
+[ext_resource type="Script" uid="uid://syw6v4jgpqtd" path="res://gui/hud_icebreak_score.gd" id="1_7bndj"]
 
 [node name="HUDScore" type="VBoxContainer"]
 script = ExtResource("1_7bndj")

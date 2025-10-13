@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cavivrr3ournd"
-path="res://.godot/imported/WaterSurface_Sprite.png-bd88319e4e9e5e25707b0aa1a3e97553.ctex"
+path="res://.godot/imported/WaterSurface_Sprite.png-31be354c1a012a59180d91ef7c969314.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Water/WaterSurface_Sprite.png"
-dest_files=["res://.godot/imported/WaterSurface_Sprite.png-bd88319e4e9e5e25707b0aa1a3e97553.ctex"]
+source_file="res://art/water/WaterSurface_Sprite.png"
+dest_files=["res://.godot/imported/WaterSurface_Sprite.png-31be354c1a012a59180d91ef7c969314.ctex"]
 
 [params]
 
