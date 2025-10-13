@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cd8164d32m1e1" path="res://level/level_lobby_ready_area.gd" id="1_v4cxs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yocxa"]
+size = Vector2(32, 64)
 
 [node name="LevelLobbyReadyArea" type="Node2D"]
 script = ExtResource("1_v4cxs")

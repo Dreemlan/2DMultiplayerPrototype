@@ -20,7 +20,6 @@ func _ready() -> void:
 		lobby_ready.player_ready.connect(_on_player_ready)
 		lobby_timer.timer_finished.connect(_on_timer_finished)
 
-
 func _on_setup_player(target_peer: int) -> void:
 	if multiplayer.is_server():
 		var registered_players: Array = Multiplayer.peer_display_names.keys()

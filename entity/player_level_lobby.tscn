@@ -5,14 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://cyoajpyvxaaq" path="res://component/networking/component_movement_platformer.tscn" id="3_8tu7r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hsefk"]
-size = Vector2(16, 16)
+size = Vector2(32, 32)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.125681, 0.125681)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_fqitv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
