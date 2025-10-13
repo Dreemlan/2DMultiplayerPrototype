@@ -5,22 +5,23 @@ extends Node2D
 
 const LOBBY_PLAYER_CARD = preload("res://gui/hud_lobby_player_card.tscn")
 
-var ready_statuses: Dictionary[int, bool] = {}
+var player_ready_status: Dictionary[int, bool] = {}
 var target_level
 
-@onready var lobby_level_ready_area: Node2D = $LobbyLevelReadyArea
+@onready var level_manager = get_parent()
+@onready var lobby_ready: Node2D = $LevelLobbyReadyArea
 @onready var lobby_timer: Timer = $HUD/Control/LevelLobbyTimer
 @onready var player_card_container: HBoxContainer = $HUD/Control/MarginContainer/VBoxContainer/PlayerCardContainer
 
 
 func _ready() -> void:
 	if multiplayer.is_server():
-		Multiplayer.peer_registered.connect(_on_peer_registered)
-		lobby_level_ready_area.player_ready.connect(_on_player_ready)
+		Multiplayer.peer_registered.connect(_on_setup_player)
+		lobby_ready.player_ready.connect(_on_player_ready)
 		lobby_timer.timer_finished.connect(_on_timer_finished)
 
 
-func _on_peer_registered(target_peer: int) -> void:
+func _on_setup_player(target_peer: int) -> void:
 	if multiplayer.is_server():
 		var registered_players: Array = Multiplayer.peer_display_names.keys()
 		for p in registered_players:
@@ -28,7 +29,7 @@ func _on_peer_registered(target_peer: int) -> void:
 			var p_name = Multiplayer.peer_display_names[p]
 			rpc_id(target_peer, "add_player_card", p, p_name)
 		
-		ready_statuses[target_peer] = false
+		player_ready_status[target_peer] = false
 		
 		var target_name = Multiplayer.peer_display_names[target_peer]
 		rpc("add_player_card", target_peer, target_name)
@@ -39,41 +40,44 @@ func _on_peer_registered(target_peer: int) -> void:
 func _on_player_ready(level: PackedScene, player_node: Node, ready_status: bool) -> void:
 	if multiplayer.is_server():
 		target_level = level
+		
 		var peer_id = int(player_node.name)
-		ready_statuses[peer_id] = ready_status
+		player_ready_status[peer_id] = ready_status
+		
 		rpc("update_player_card_ready", peer_id, ready_status)
-		if all_players_ready(): rpc("start_lobby_timer")
-		else: rpc("stop_lobby_timer")
-
-
-func all_players_ready() -> bool:
-	for status in ready_statuses.values():
-		if status == false:
-			Helper.log("Not all players are ready")
-			return false
-	return true
+		
+		check_all_players_ready()
 
 
 func _on_timer_finished() -> void:
-	pass
+	if multiplayer.is_server():
+		level_manager.rpc("load_level", target_level)
+
+
+func check_all_players_ready() -> void:
+	if multiplayer.is_server():
+		for status in player_ready_status.values():
+			if status == false:
+				rpc("stop_lobby_timer")
+		rpc("start_lobby_timer")
 
 
 @rpc("authority", "call_local", "reliable")
 func add_player_card(peer_id: int, display_name: String) -> void:
 	if player_card_container.has_node(str(peer_id)): return
 	
-	var inst = LOBBY_PLAYER_CARD.instantiate()
-	inst.name = str(peer_id)
-	player_card_container.add_child(inst)
-	inst.set_card_name(display_name)
+	var inst_card = LOBBY_PLAYER_CARD.instantiate()
+	player_card_container.add_child(inst_card)
+	inst_card.name = str(peer_id)
+	inst_card.set_display_name(display_name)
 	
-	Helper.log("Added player card for peer %d (%s)" % [peer_id, display_name])
+	Helper.log("Added player card: %d (%s)" % [peer_id, display_name])
 
 
 @rpc("authority", "call_local", "reliable")
-func update_player_card_ready(peer_id: int, status: bool) -> void:
+func set_player_card_ready(peer_id: int, status: bool) -> void:
 	var player_card = player_card_container.get_node(str(peer_id))
-	player_card.update_ready_status(status)
+	player_card.set_ready_status(status)
 
 
 @rpc("authority", "call_local", "reliable")

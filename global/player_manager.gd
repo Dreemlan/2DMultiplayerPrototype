@@ -4,11 +4,12 @@ extends Node
 
 
 func _ready() -> void:
-	if multiplayer.is_server():
-		multiplayer.peer_disconnected.connect(_on_peer_disconnect)
+	multiplayer.peer_disconnected.connect(_on_peer_disconnect)
+
 
 func _on_peer_disconnect(peer_id: int) -> void:
 	despawn_player(peer_id)
+
 
 @rpc("authority", "reliable")
 func spawn_player(peer_id: int, level_name: String, level_basename: String) -> void:
@@ -17,7 +18,7 @@ func spawn_player(peer_id: int, level_name: String, level_basename: String) -> v
 	
 	if has_node(player_node_name): return
 	
-	Helper.log("Spawning player entity %s for %s" % [level_basename, peer_id])
+	Helper.log("Spawning player: %s" % peer_id)
 	
 	var inst = player_scene.instantiate()
 	inst.name = player_node_name
