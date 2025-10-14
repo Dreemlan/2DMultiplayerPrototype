@@ -6,7 +6,7 @@ extends Node2D
 const LOBBY_PLAYER_CARD = preload("res://gui/hud_lobby_player_card.tscn")
 
 var player_ready_status: Dictionary[int, bool] = {}
-var target_level
+var target_level: String = "level_lobby"
 
 @onready var level_manager = get_parent()
 @onready var lobby_ready: Node2D = $LevelLobbyReadyArea
@@ -33,17 +33,17 @@ func _on_setup_player(target_peer: int) -> void:
 		var target_name = Multiplayer.peer_display_names[target_peer]
 		rpc("add_player_card", target_peer, target_name)
 		
-		PlayerManager.spawn_player(target_peer, self.name, scene_file_path.get_file().get_basename())
+		PlayerManager.spawn_player(target_peer, scene_file_path.get_file().get_basename())
 
 
-func _on_player_ready(level: PackedScene, player_node: Node, ready_status: bool) -> void:
+func _on_player_ready(level_basename: String, player_node: Node, ready_status: bool) -> void:
 	if multiplayer.is_server():
-		target_level = level
+		target_level = level_basename
 		
 		var peer_id = int(player_node.name)
 		player_ready_status[peer_id] = ready_status
 		
-		rpc("update_player_card_ready", peer_id, ready_status)
+		rpc("set_player_card_ready", peer_id, ready_status)
 		
 		check_all_players_ready()
 
@@ -58,6 +58,7 @@ func check_all_players_ready() -> void:
 		for status in player_ready_status.values():
 			if status == false:
 				rpc("stop_lobby_timer")
+				return
 		rpc("start_lobby_timer")
 
 
@@ -67,6 +68,9 @@ func add_player_card(peer_id: int, display_name: String) -> void:
 	
 	var inst_card = LOBBY_PLAYER_CARD.instantiate()
 	player_card_container.add_child(inst_card)
+	
+	await get_tree().process_frame
+	
 	inst_card.name = str(peer_id)
 	inst_card.set_display_name(display_name)
 	
@@ -75,15 +79,23 @@ func add_player_card(peer_id: int, display_name: String) -> void:
 
 @rpc("authority", "call_local", "reliable")
 func set_player_card_ready(peer_id: int, status: bool) -> void:
-	var player_card = player_card_container.get_node(str(peer_id))
-	player_card.set_ready_status(status)
+	var player_card = player_card_container.get_node_or_null(str(peer_id))
+	
+	await get_tree().process_frame
+	
+	if player_card:
+		player_card.set_ready_status(status)
 
 
 @rpc("authority", "call_local", "reliable")
 func start_lobby_timer() -> void:
+	await get_tree().process_frame
 	lobby_timer.start()
+	Helper.log("Started lobby timer")
 
 
 @rpc("authority", "call_local", "reliable")
 func stop_lobby_timer() -> void:
+	await get_tree().process_frame
 	lobby_timer.stop()
+	Helper.log("Stopped lobby timer")

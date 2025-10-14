@@ -5,11 +5,15 @@ var game_started: bool = false
 @onready var level_start_timer: Node = $HUD/Control/PlayerScoreContainer/LevelStartTimer
 
 
+func _enter_tree() -> void:
+	if multiplayer.is_server():
+		for peer_id in Multiplayer.peer_display_names.keys():
+			PlayerManager.spawn_player(peer_id, scene_file_path.get_file().get_basename())
+
+
 func _ready() -> void:
 	if multiplayer.is_server():
 		level_start_timer.timer_finished.connect(_on_timer_finished)
-		for peer_id in Multiplayer.peer_display_names.keys():
-			PlayerManager.spawn_player(peer_id, self.name, scene_file_path.get_file().get_basename())
 
 
 func _on_timer_finished() -> void:

@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://d4j3gulpuesta" path="res://component/networking/component_transform.gd" id="1_x1sxw"]
 
-[node name="SyncTransform" type="Node"]
+[node name="ComponentTransform" type="Node"]
 script = ExtResource("1_x1sxw")
