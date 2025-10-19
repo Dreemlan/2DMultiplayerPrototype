@@ -4,14 +4,14 @@ var client_display_name: String = "Noob"
 
 
 func _ready() -> void:
-	%ButtonHost.mouse_entered.connect(_on_hover)
-	%ButtonJoin.mouse_entered.connect(_on_hover)
-	%ButtonSettings.mouse_entered.connect(_on_hover)
-	%ButtonQuit.mouse_entered.connect(_on_hover)
 	%ButtonHost.pressed.connect(_on_button_host_pressed)
 	%ButtonJoin.pressed.connect(_on_button_join_pressed)
 	%ButtonSettings.pressed.connect(_on_button_settings_pressed)
 	%ButtonQuit.pressed.connect(_on_button_quit_pressed)
+	
+	for btn in get_tree().get_nodes_in_group("btn"):
+		btn.mouse_entered.connect(_on_hover)
+		btn.pressed.connect(_on_press)
 	
 	multiplayer.connected_to_server.connect(_on_connect_to_server)
 
