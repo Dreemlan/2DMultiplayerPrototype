@@ -26,11 +26,11 @@ func _physics_process(_delta: float) -> void:
 			var last_collision = null
 			if player_can_collide[peer_id] == true:
 				# Set up RNG
-				var rng_num = randi_range(0, 20)
+				var rng_num = randi_range(0, 10)
 				# Handle collision
 				var latest_collision = player.get_last_slide_collision()
 				if last_collision != latest_collision:
-					var col_rng = randi_range(0, 20)
+					var col_rng = randi_range(0, 10)
 					if col_rng == rng_num: 
 					
 						# Get cell coords
@@ -69,10 +69,11 @@ func destroy_tile(cell_coords, destroyed_tile_id) -> void:
 
 @rpc("authority", "call_local", "reliable")
 func hud_score_update(peer_id: int, score: int) -> void:
-	if not %PlayerScoreContainer.has_node(str(peer_id)):
+	var peer_id_str = str(peer_id)
+	if not %PlayerScoreContainer.has_node(peer_id_str):
 		var inst = HUD_ICEBREAK_SCORE.instantiate()
 		%PlayerScoreContainer.add_child(inst)
-		inst.name = str(peer_id)
-	var hud_score = %PlayerScoreContainer.get_node_or_null(str(peer_id))
+		inst.name = peer_id_str
+	var hud_score = %PlayerScoreContainer.get_node_or_null(peer_id_str)
 	if hud_score != null:
 		hud_score.update_score_label(score)
