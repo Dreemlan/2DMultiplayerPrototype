@@ -5,6 +5,7 @@ extends Node
 const LEVEL_LOBBY = preload("res://level/level_lobby.tscn")
 
 var active_level: String = ""
+var player_scores: Dictionary[int, int] = {}
 
 
 func _ready() -> void:

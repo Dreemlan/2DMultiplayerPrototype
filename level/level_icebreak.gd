@@ -2,6 +2,8 @@ extends Node2D
 
 var player_can_collide: Dictionary[int, bool] = {}
 
+@onready var level_manager = get_parent()
+@onready var level_scores: Dictionary[int, int] = {}
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 
 
@@ -41,6 +43,17 @@ func _physics_process(_delta: float) -> void:
 							rpc("destroy_tile", cell_coords, destroyed_tile_id)
 						
 						# Cleanup
+						player_can_collide[peer_id] = false
+						last_collision = latest_collision
+					
+					else:
+						if not level_scores.has(peer_id):
+							level_scores.set(peer_id, 0)
+						var new_score: int = level_scores[peer_id]
+						new_score += 1
+						level_scores.set(peer_id, new_score)
+						Helper.log(new_score)
+						
 						player_can_collide[peer_id] = false
 						last_collision = latest_collision
 
