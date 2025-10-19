@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=4 uid="uid://dqyxdb8yn0ubi"]
+[gd_scene load_steps=5 format=4 uid="uid://dqyxdb8yn0ubi"]
 
 [ext_resource type="Script" uid="uid://dg2wkwuqkhum6" path="res://level/level_icebreak.gd" id="1_d4jm2"]
+[ext_resource type="Theme" uid="uid://d17mk31idftvd" path="res://gui/theme_primary.tres" id="2_fkg0o"]
 [ext_resource type="TileSet" uid="uid://cvkcblkg6dbm0" path="res://art/tileset/tileset_ice.tres" id="3_fkg0o"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fkg0o"]
@@ -17,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_fkg0o")
 
 [node name="PlayerScoreContainer" type="HBoxContainer" parent="HUD/Control"]
 unique_name_in_owner = true
@@ -28,32 +30,6 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
-
-[node name="SpawnPoints" type="Node" parent="."]
-
-[node name="SpawnPoint1" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-164, -39)
-
-[node name="SpawnPoint2" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-118, -39)
-
-[node name="SpawnPoint3" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-71, -39)
-
-[node name="SpawnPoint4" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-25, -39)
-
-[node name="SpawnPoint5" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(24, -39)
-
-[node name="SpawnPoint6" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(74, -39)
-
-[node name="SpawnPoint7" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(124, -39)
-
-[node name="SpawnPoint8" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(172, -39)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)

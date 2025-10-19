@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bud836iugnnjy"]
+[gd_scene load_steps=6 format=3 uid="uid://bud836iugnnjy"]
 
 [ext_resource type="Script" uid="uid://clnqwgpek2ppd" path="res://gui/menu_main.gd" id="1_l2prv"]
 [ext_resource type="Theme" uid="uid://d17mk31idftvd" path="res://gui/theme_primary.tres" id="2_l2prv"]
+[ext_resource type="AudioStream" uid="uid://yw0cxkd1qonf" path="res://audio/tick_001.ogg" id="3_henhl"]
+[ext_resource type="AudioStream" uid="uid://defham2cwl4ty" path="res://audio/select_001.ogg" id="4_gtd7g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l2prv"]
 font_size = 64
@@ -88,3 +90,11 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "Quit"
+
+[node name="AudioHover" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_henhl")
+
+[node name="AudioPress" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_gtd7g")
