@@ -2,6 +2,9 @@ extends CanvasLayer
 
 var client_display_name: String = "Noob"
 
+@onready var menu_manager = get_parent()
+
+@export var button_settings_goto: PackedScene
 
 func _ready() -> void:
 	%ButtonHost.pressed.connect(_on_button_host_pressed)
@@ -27,7 +30,7 @@ func _on_button_join_pressed() -> void:
 	if not Multiplayer.create_client(): Helper.log("Failed to create client")
 
 func _on_button_settings_pressed() -> void:
-	get_tree().change_scene_to_file("res://gui/menu/settings_menu.tscn")
+	menu_manager.add_menu(button_settings_goto)
 
 func _on_button_quit_pressed() -> void:
 	get_tree().quit()

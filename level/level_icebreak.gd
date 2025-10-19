@@ -4,6 +4,7 @@ const HUD_ICEBREAK_SCORE = preload("uid://dms1txqocx2vk")
 
 var player_can_collide: Dictionary[int, bool] = {}
 
+@onready var elimination_zone: Area2D = $EliminationZone
 @onready var level_manager = get_parent()
 @onready var level_scores: Dictionary[int, int] = {}
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
