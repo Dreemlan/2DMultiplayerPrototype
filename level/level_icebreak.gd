@@ -1,5 +1,7 @@
 extends Node2D
 
+const HUD_ICEBREAK_SCORE = preload("uid://dms1txqocx2vk")
+
 var player_can_collide: Dictionary[int, bool] = {}
 
 @onready var level_manager = get_parent()
@@ -11,7 +13,7 @@ func _enter_tree() -> void:
 	if multiplayer.is_server():
 		for peer_id in Multiplayer.peer_display_names.keys():
 			PlayerManager.spawn_player(peer_id, scene_file_path.get_file().get_basename())
-
+			rpc("hud_score_update", peer_id, 0)
 
 func _physics_process(_delta: float) -> void:
 	if multiplayer.is_server():
@@ -52,6 +54,8 @@ func _physics_process(_delta: float) -> void:
 						var new_score: int = level_scores[peer_id]
 						new_score += 1
 						level_scores.set(peer_id, new_score)
+						
+						rpc("hud_score_update", peer_id, new_score)
 						Helper.log(new_score)
 						
 						player_can_collide[peer_id] = false
@@ -61,3 +65,14 @@ func _physics_process(_delta: float) -> void:
 @rpc("authority", "call_local", "reliable")
 func destroy_tile(cell_coords, destroyed_tile_id) -> void:
 	tile_map_layer.set_cell(cell_coords, destroyed_tile_id)
+
+
+@rpc("authority", "call_local", "reliable")
+func hud_score_update(peer_id: int, score: int) -> void:
+	if not %PlayerScoreContainer.has_node(str(peer_id)):
+		var inst = HUD_ICEBREAK_SCORE.instantiate()
+		%PlayerScoreContainer.add_child(inst)
+		inst.name = str(peer_id)
+	var hud_score = %PlayerScoreContainer.get_node_or_null(str(peer_id))
+	if hud_score != null:
+		hud_score.update_score_label(score)
