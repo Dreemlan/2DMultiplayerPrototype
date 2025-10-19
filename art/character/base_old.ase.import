@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bpfg7yg0tf1st"
+path="res://.godot/imported/base_old.ase-9c938f5708a5a3b055f43c21943a2a81.res"
+
+[deps]
+
+source_file="res://art/character/base_old.ase"
+dest_files=["res://.godot/imported/base_old.ase-9c938f5708a5a3b055f43c21943a2a81.res"]
+
+[params]
+
