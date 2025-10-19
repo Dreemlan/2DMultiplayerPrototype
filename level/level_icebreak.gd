@@ -15,6 +15,7 @@ func _enter_tree() -> void:
 			PlayerManager.spawn_player(peer_id, scene_file_path.get_file().get_basename())
 			rpc("hud_score_update", peer_id, 0)
 
+
 func _physics_process(_delta: float) -> void:
 	if multiplayer.is_server():
 		for player in PlayerManager.current_player_nodes.values():
