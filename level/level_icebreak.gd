@@ -49,6 +49,8 @@ func _physics_process(_delta: float) -> void:
 						# Cleanup
 						player_can_collide[peer_id] = false
 						last_collision = latest_collision
+						
+						AudioManager.emit_audio("sfx_destruction_ice", player.global_position)
 					
 					else:
 						if not level_scores.has(peer_id):
@@ -62,6 +64,8 @@ func _physics_process(_delta: float) -> void:
 						
 						player_can_collide[peer_id] = false
 						last_collision = latest_collision
+						
+						AudioManager.emit_audio("footstep_snow_000", player.global_position)
 
 
 @rpc("authority", "call_local", "reliable")

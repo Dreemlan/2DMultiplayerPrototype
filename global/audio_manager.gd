@@ -9,7 +9,7 @@ func emit_audio(audio_name, audio_pos) -> void:
 	var inst: AudioStreamPlayer2D = COMPONENT_AUDIO_EMIT.instantiate()
 	add_child(inst)
 	
-	var audio_path = "res://audio/" + audio_name
+	var audio_path = "res://audio/" + audio_name + ".ogg"
 	inst.stream = load(audio_path)
 	
 	inst.global_position = audio_pos

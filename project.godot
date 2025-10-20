@@ -21,6 +21,7 @@ Helper="*res://global/helper.gd"
 Multiplayer="*res://global/multiplayer.gd"
 PlayerManager="*res://global/player_manager.gd"
 ComponentManager="*res://global/component_manager.gd"
+AudioManager="*res://global/audio_manager.gd"
 
 [display]
 
