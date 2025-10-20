@@ -23,8 +23,10 @@ func add_menu(menu_scene: PackedScene) -> void:
 	add_child(inst)
 	_set_active_menu(inst)
 
-func go_back() -> void:
-	pass
+func go_back(menu_node: CanvasLayer) -> void:
+	active_menu = prev_menu
+	menu_node.queue_free()
+	
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
