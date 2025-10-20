@@ -26,13 +26,15 @@ func add_menu(menu_scene: PackedScene) -> void:
 func go_back(menu_node: CanvasLayer) -> void:
 	active_menu = prev_menu
 	menu_node.queue_free()
-	
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if Input.is_action_just_pressed("esc"):
 			match active_menu.name:
+				null:
+					var main_menu = load("res://gui/menu_main.tscn")
+					add_menu(main_menu)
 				"MenuMain":
 					var quit_confirm = load("res://gui/menu_quit_confirm.tscn")
 					add_menu(quit_confirm)

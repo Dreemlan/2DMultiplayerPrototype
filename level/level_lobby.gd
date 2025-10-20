@@ -38,11 +38,13 @@ func _on_setup_player(target_peer: int) -> void:
 
 func _on_player_ready(level_basename: String, player_node: Node, ready_status: bool) -> void:
 	if multiplayer.is_server():
+		
 		target_level = level_basename
 		
 		var peer_id = int(player_node.name)
 		player_ready_status[peer_id] = ready_status
 		
+		## This will produce error because when level is added on server, its missnamed
 		rpc("set_player_card_ready", peer_id, ready_status)
 		
 		check_all_players_ready()
@@ -79,6 +81,8 @@ func add_player_card(peer_id: int, display_name: String) -> void:
 
 @rpc("authority", "call_local", "reliable")
 func set_player_card_ready(peer_id: int, status: bool) -> void:
+	
+	
 	var player_card = player_card_container.get_node_or_null(str(peer_id))
 	
 	await get_tree().process_frame

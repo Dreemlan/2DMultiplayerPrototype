@@ -23,9 +23,9 @@ func _on_peer_connected(peer_id: int) -> void:
 
 @rpc("authority", "call_local", "reliable")
 func load_level(level_basename: String) -> void:
-	if level_basename == active_level:
-		Helper.log("Level already loaded: %s" % active_level)
-		return
+	#if level_basename == active_level:
+		#Helper.log("Level already loaded: %s" % active_level)
+		#return
 	
 	if get_child_count() > 0:
 		var old_level = get_child(0)
@@ -42,4 +42,11 @@ func load_level(level_basename: String) -> void:
 	var inst_level = level_scene.instantiate()
 	call_deferred("add_child", inst_level)
 	
+	if not level_basename == "level_lobby":
+		inst_level.round_won.connect(_on_round_won)
+	
 	Helper.log("Loaded level: %s" % level_basename)
+
+
+func _on_round_won(_player) -> void:
+	load_level(active_level)

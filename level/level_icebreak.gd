@@ -3,18 +3,24 @@ extends Node2D
 const HUD_ICEBREAK_SCORE = preload("uid://dms1txqocx2vk")
 
 var player_can_collide: Dictionary[int, bool] = {}
+var players_eliminated: Array = []
 
 @onready var elimination_zone: Area2D = $EliminationZone
 @onready var level_manager = get_parent()
 @onready var level_scores: Dictionary[int, int] = {}
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 
+signal round_won(player_node)
 
 func _enter_tree() -> void:
 	if multiplayer.is_server():
 		for peer_id in Multiplayer.peer_display_names.keys():
 			PlayerManager.spawn_player(peer_id, scene_file_path.get_file().get_basename())
 			rpc("hud_score_update", peer_id, 0)
+
+
+func _ready() -> void:
+	elimination_zone.body_entered.connect(_on_elimination)
 
 
 func _physics_process(_delta: float) -> void:
@@ -28,11 +34,11 @@ func _physics_process(_delta: float) -> void:
 			var last_collision = null
 			if player_can_collide[peer_id] == true:
 				# Set up RNG
-				var rng_num = randi_range(0, 10)
+				var rng_num = randi_range(0, 5)
 				# Handle collision
 				var latest_collision = player.get_last_slide_collision()
 				if last_collision != latest_collision:
-					var col_rng = randi_range(0, 10)
+					var col_rng = randi_range(0, 5)
 					if col_rng == rng_num: 
 					
 						# Get cell coords
@@ -66,6 +72,28 @@ func _physics_process(_delta: float) -> void:
 						last_collision = latest_collision
 						
 						AudioManager.emit_audio("footstep_snow_000", player.global_position)
+
+
+func _on_elimination(body) -> void:
+	if not multiplayer.is_server(): return
+	
+	# Check if all players are eliminated
+	players_eliminated.append(int(body.name))
+	for p in PlayerManager.current_player_nodes:
+		if not players_eliminated.has(p):
+			return
+	
+	# All players are eliminated, determine winner, restart level
+	var top_score = 0
+	var top_player
+	for player in level_scores:
+		var current_score = level_scores[player]
+		if current_score > top_score:
+			top_score = current_score
+			top_player = player
+	
+	emit_signal("round_won", top_player)
+	Helper.log("Round won: %s" % top_player)
 
 
 @rpc("authority", "call_local", "reliable")

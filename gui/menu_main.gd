@@ -6,6 +6,7 @@ var client_display_name: String = "Noob"
 
 @export var button_settings_goto: PackedScene
 
+
 func _ready() -> void:
 	%ButtonHost.pressed.connect(_on_button_host_pressed)
 	%ButtonJoin.pressed.connect(_on_button_join_pressed)

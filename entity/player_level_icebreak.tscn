@@ -10,11 +10,11 @@ size = Vector2(16, 16)
 collision_layer = 2
 collision_mask = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.125681, 0.125681)
-texture = ExtResource("1_8eovi")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hsefk")
 
 [node name="PlayerNameLabel" parent="." instance=ExtResource("2_7ol4w")]
+
+[node name="ComponentPlayerSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.125681, 0.125681)
+texture = ExtResource("1_8eovi")
