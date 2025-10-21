@@ -15,6 +15,7 @@ signal round_won(player_node)
 func _enter_tree() -> void:
 	if multiplayer.is_server():
 		for peer_id in Multiplayer.peer_display_names.keys():
+			player_can_collide[peer_id] = false
 			PlayerManager.spawn_player(peer_id, scene_file_path.get_file().get_basename())
 			rpc("hud_score_update", peer_id, 0)
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://dkaop87dyxxox"]
 
-[ext_resource type="Texture2D" uid="uid://cfwuc7tutc1yg" path="res://icon.svg" id="1_8eovi"]
 [ext_resource type="PackedScene" uid="uid://cf3tc7tdnuyni" path="res://gui/hud_player_displayname.tscn" id="2_7ol4w"]
+[ext_resource type="PackedScene" uid="uid://bqvhgfuexf1sj" path="res://art/character/player_character.tscn" id="2_cbwbi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hsefk"]
-size = Vector2(16, 16)
+size = Vector2(24, 32)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -15,6 +15,4 @@ shape = SubResource("RectangleShape2D_hsefk")
 
 [node name="PlayerNameLabel" parent="." instance=ExtResource("2_7ol4w")]
 
-[node name="ComponentPlayerSprite" type="Sprite2D" parent="."]
-scale = Vector2(0.125681, 0.125681)
-texture = ExtResource("1_8eovi")
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_cbwbi")]

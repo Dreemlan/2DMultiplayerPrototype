@@ -1,0 +1,125 @@
+[gd_scene load_steps=11 format=4 uid="uid://bqvhgfuexf1sj"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_240kb"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAACWAQAAUklGRo4BAABXRUJQVlA4TIIBAAAvP8APEDegJgABximE3NKuGmQCFmugg/6nOGL4KWQjCVqQFVrl547jbG7+A8D/KYrXa54oB5Br26nraKkDnM9YyHYB5uL5W0AF9qKA9N+FgxTeMLOI/jNy2zaMfC7AdnsF/c8n+ieD/3JcXYmEPcau7lG5TnTVazeOh3F31dR3xwHgwG0dGB1YHUdtz4xDunHkm0eHcVrHiZqAAwWOo2Rk67hONOPYXcdRraP37fXrkG7bpLW2yZiEwKMjRONkycirdFscHEuIjhO/WcdPHBzLd3ScWJN10hI41a08TrbOVLlYJ4lSalw2UrLOwTE4DUVJovfXGIc6ksgkC9O8Q/VJdcLxb54ov+eQq+86aGYd14m7q6a+TzsAAAewTjqkA7U9yzdPOk7UBBwomHRcJ1rJyE/7pKP37ZVxVOmTDgmBpbW2SYhvODLy6hUHx+I64Dt+jOPbcSSsyTpoCTw4JLDjqFwchygNDlJyHI3LZh1ExuFtUZL4jkMikyz8hkP1SXXKQQ==")
+size_override = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21cgu"]
+atlas = SubResource("PortableCompressedTexture2D_240kb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohwdv"]
+atlas = SubResource("PortableCompressedTexture2D_240kb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vfiv"]
+atlas = SubResource("PortableCompressedTexture2D_240kb")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e62i2"]
+atlas = SubResource("PortableCompressedTexture2D_240kb")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mhm2y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21cgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohwdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vfiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e62i2")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 6.0
+}]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_21cgu"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAACAAAAAQAQAAUklGRggBAABXRUJQVlA4TPwAAAAvP8AHEE+gJpIU5kvcpA752EBGbLGhmJEkaIZgfBZ9Udbi/q6aAEAabjKQhDpE3W2G+jv/AYD/n0QiUaIdi51yY+yi4oEbZ9vb5Jdv8IU62j8iF4Aj9DXSr8y0lJU6dzhBu26z/5Utov9m07ZJ0l19g95lNpaZ9LUi7UTkeypnIt9ltZNTkRoAGKXTyu77YJTORDYCTLIsi8NOzxtwzDGz0rn8MONPtE67TGuTC/Y3GKWT7K4xabqoyS7o9AdR0zmlk2j56wg6Q+kqnJ7scMG+1zFqp90he73GvZbC6YEiu79Ko3aSZQAvRwqnpxzhZUjj9FKYKOwMNuz8C0o=")
+size_override = Vector2(64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhm2y"]
+atlas = SubResource("PortableCompressedTexture2D_21cgu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ctmg"]
+atlas = SubResource("PortableCompressedTexture2D_21cgu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o6rf6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhm2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ctmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhm2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhm2y")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 6.0
+}]
+
+[node name="PlayerCharacter" type="Node2D"]
+
+[node name="Body" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_mhm2y")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.20447177
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://art/character/player_body.ase",
+"source_uid": 1701567215924662226
+}
+metadata/_aseprite_wizard_source_file_hash_ = "265f47fafcb487ddc595aece641955f9"
+
+[node name="Head" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_o6rf6")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.10900472
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://art/character/player_head.ase",
+"source_uid": 1097892924936770918
+}
+metadata/_aseprite_wizard_source_file_hash_ = "27c19155305f91bec8e528f4ff7ca40c"

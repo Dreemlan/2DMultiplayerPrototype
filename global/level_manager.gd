@@ -23,9 +23,9 @@ func _on_peer_connected(peer_id: int) -> void:
 
 @rpc("authority", "call_local", "reliable")
 func load_level(level_basename: String) -> void:
-	#if level_basename == active_level:
-		#Helper.log("Level already loaded: %s" % active_level)
-		#return
+	if level_basename == active_level:
+		Helper.log("Level already loaded: %s" % active_level)
+		return
 	
 	if get_child_count() > 0:
 		var old_level = get_child(0)
