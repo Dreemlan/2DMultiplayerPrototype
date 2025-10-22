@@ -11,26 +11,24 @@ var player_scores: Dictionary[int, int] = {}
 func _ready() -> void:
 	if multiplayer.is_server():
 		multiplayer.peer_connected.connect(_on_peer_connected)
-		
-		load_level("level_lobby")
+		load_level("level_lobby", false)
 
 
 func _on_peer_connected(peer_id: int) -> void:
 	if multiplayer.is_server():
-		Helper.log("Loading level for peer: %s" % peer_id)
-		rpc_id(peer_id, "load_level", active_level)
+		rpc_id(peer_id, "load_level", active_level, false)
 
 
 @rpc("authority", "call_local", "reliable")
-func load_level(level_basename: String) -> void:
-	if level_basename == active_level:
-		Helper.log("Level already loaded: %s" % active_level)
-		return
+func load_level(level_basename: String, reload: bool) -> void:
+	if reload: active_level = ""
+	if level_basename == active_level: return
 	
 	if get_child_count() > 0:
-		var old_level = get_child(0)
-		if old_level:
-			old_level.call_deferred("queue_free")
+		for child in get_children():
+			child.queue_free()
+			while is_instance_valid(child):
+				await get_tree().process_frame
 	
 	active_level = level_basename
 	
@@ -48,5 +46,16 @@ func load_level(level_basename: String) -> void:
 	Helper.log("Loaded level: %s" % level_basename)
 
 
-func _on_round_won(_player) -> void:
-	load_level(active_level)
+func _on_round_won(player_id) -> void:
+	var player_name = str(player_id)
+	rpc("add_won_popup", player_name)
+	rpc("load_level", active_level, true)
+
+
+@rpc("authority", "reliable")
+func add_won_popup(player_name: String) -> void:
+	var scene = load("res://gui/round_won_popup.tscn")
+	var inst = scene.instantiate()
+	if inst:
+		inst.set_player(player_name)
+	add_child(inst)

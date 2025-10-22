@@ -73,14 +73,12 @@ func despawn_all_players() -> void:
 func acknowledge_spawn(target_peer: int) -> void:
 	if multiplayer.is_server():
 		var sender = multiplayer.get_remote_sender_id()
-		Helper.log("Player %s has acknowledged spawn of: %s" % [sender, target_peer])
 		rpc_id(sender, "acknowledge_spawn", target_peer)
 		
 		if current_player_nodes.has(target_peer):
 			var target_player_node = current_player_nodes[target_peer]
 			ComponentManager.activate_components(target_player_node)
 	else:
-		Helper.log("Server has confirmed acknowledgement of spawn: %s" % target_peer)
 		if current_player_nodes.has(target_peer):
 			var target_player_node = current_player_nodes[target_peer]
 			ComponentManager.activate_components(target_player_node)

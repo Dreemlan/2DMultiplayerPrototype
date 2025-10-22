@@ -27,6 +27,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if multiplayer.is_server():
 		for player in PlayerManager.current_player_nodes.values():
+			if not player: return
 			var peer_id = int(player.name)
 			
 			if not player.is_on_floor():
@@ -67,7 +68,6 @@ func _physics_process(_delta: float) -> void:
 						level_scores.set(peer_id, new_score)
 						
 						rpc("hud_score_update", peer_id, new_score)
-						Helper.log(new_score)
 						
 						player_can_collide[peer_id] = false
 						last_collision = latest_collision
@@ -95,6 +95,10 @@ func _on_elimination(body) -> void:
 	
 	emit_signal("round_won", top_player)
 	Helper.log("Round won: %s" % top_player)
+
+
+func unregister_player(peer_id: int) -> void:
+	players_eliminated.erase(peer_id)
 
 
 @rpc("authority", "call_local", "reliable")

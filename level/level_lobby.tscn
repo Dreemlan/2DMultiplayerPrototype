@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxto4t6fgqwco"]
+[gd_scene load_steps=10 format=3 uid="uid://bxto4t6fgqwco"]
 
 [ext_resource type="Script" uid="uid://7q32llvtai2c" path="res://level/level_lobby.gd" id="1_0eqbo"]
 [ext_resource type="Theme" uid="uid://d17mk31idftvd" path="res://gui/theme_primary.tres" id="2_6v813"]
@@ -6,7 +6,6 @@
 [ext_resource type="FontFile" uid="uid://8adxwhx8wajc" path="res://font/Jersey10-Regular.ttf" id="4_3ne6f"]
 [ext_resource type="PackedScene" uid="uid://chbbbpinr0r2m" path="res://level/level_lobby_ready_area.tscn" id="5_yg3e2"]
 [ext_resource type="PackedScene" uid="uid://dqyxdb8yn0ubi" path="res://level/level_icebreak.tscn" id="6_lufkk"]
-[ext_resource type="PackedScene" uid="uid://oe7c3g3em0s1" path="res://level/level_lobby_choose_color.tscn" id="7_si46u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8jbh6"]
 size = Vector2(304, 20)
@@ -112,6 +111,3 @@ horizontal_alignment = 1
 [node name="LevelLobbyReadyArea" parent="." instance=ExtResource("5_yg3e2")]
 position = Vector2(-82, 11)
 target_level = ExtResource("6_lufkk")
-
-[node name="LevelLobbyChooseColor" parent="." instance=ExtResource("7_si46u")]
-position = Vector2(93, 63)

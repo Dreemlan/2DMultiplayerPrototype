@@ -20,6 +20,7 @@ func _ready() -> void:
 		lobby_ready.player_ready.connect(_on_player_ready)
 		lobby_timer.timer_finished.connect(_on_timer_finished)
 
+
 func _on_setup_player(target_peer: int) -> void:
 	if multiplayer.is_server():
 		var registered_players: Array = Multiplayer.peer_display_names.keys()
@@ -52,7 +53,7 @@ func _on_player_ready(level_basename: String, player_node: Node, ready_status: b
 
 func _on_timer_finished() -> void:
 	if multiplayer.is_server():
-		level_manager.rpc("load_level", target_level)
+		level_manager.rpc("load_level", target_level, false)
 
 
 func check_all_players_ready() -> void:
@@ -64,7 +65,7 @@ func check_all_players_ready() -> void:
 		rpc("start_lobby_timer")
 
 
-@rpc("authority", "call_local", "reliable")
+@rpc("authority", "reliable")
 func add_player_card(peer_id: int, display_name: String) -> void:
 	if player_card_container.has_node(str(peer_id)): return
 	
@@ -81,8 +82,6 @@ func add_player_card(peer_id: int, display_name: String) -> void:
 
 @rpc("authority", "call_local", "reliable")
 func set_player_card_ready(peer_id: int, status: bool) -> void:
-	
-	
 	var player_card = player_card_container.get_node_or_null(str(peer_id))
 	
 	await get_tree().process_frame
