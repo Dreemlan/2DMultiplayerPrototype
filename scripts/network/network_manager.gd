@@ -4,11 +4,11 @@ const GAME_SCENE = "res://scenes/game.tscn"
 const MAIN_MENU_SCENE = "res://scenes/main_menu.tscn"
 const SERVER_PORT: int = 42069
 
-var is_hosting: bool = false
+var is_hosting_game: bool = false
 
 
 func create_server() -> void:
-	is_hosting = true
+	is_hosting_game = true
 	var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 	peer = ENetMultiplayerPeer.new()
 	peer.create_server(SERVER_PORT)
@@ -17,7 +17,7 @@ func create_server() -> void:
 
 
 func create_client(host_ip: String = "localhost", host_port: int = SERVER_PORT) -> void:
-	is_hosting = false
+	is_hosting_game = false
 	_setup_client_connection_signals()
 	
 	var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()

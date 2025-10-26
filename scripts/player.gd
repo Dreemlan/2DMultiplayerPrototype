@@ -1,15 +1,28 @@
+class_name Player
 extends CharacterBody2D
 
 const SPEED: float = 500.0
 
+@export var player_input: PlayerInput
+@export var input_synchronizer: MultiplayerSynchronizer
+
 
 func _enter_tree() -> void:
-	set_multiplayer_authority(name.to_int())
+	player_input.set_multiplayer_authority(str(name).to_int())
+
+
+func _ready() -> void:
+	input_synchronizer.set_visibility_for(1, true)
 
 
 func _physics_process(_delta: float) -> void:
-	if not is_multiplayer_authority(): return
-	
-	velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down") * SPEED
-	
-	move_and_slide()
+	if is_multiplayer_authority():
+		var direction := player_input.input_dir
+		if direction:
+			velocity.x = direction.x * SPEED
+			velocity.y = direction.y * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.y = move_toward(velocity.y, 0, SPEED)
+		
+		move_and_slide()
