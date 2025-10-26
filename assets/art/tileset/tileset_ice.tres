@@ -1,0 +1,83 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cvkcblkg6dbm0"]
+
+[ext_resource type="Texture2D" uid="uid://cxu2rien8lk2l" path="res://assets/art/tileset/IceTileSet.png" id="1_55acl"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v0gcv"]
+texture = ExtResource("1_55acl")
+0:0/next_alternative_id = 14
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, -6, 8, -6, 8, 8, -6, 8)
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/1 = 1
+0:0/1/terrain_set = 0
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-6, -6, 8, -6, 8, 8, -6, 8)
+0:0/2 = 2
+0:0/2/flip_h = true
+0:0/2/terrain_set = 0
+0:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -6, 6, -6, 6, 8, -8, 8)
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -6, 8, -6, 8, 8, -8, 8)
+1:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:0/next_alternative_id = 3
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -6, 6, -6, 6, 8, -8, 8)
+2:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, -8, 8, -8, 8, 8, -6, 8)
+0:1/0/terrains_peering_bit/bottom_right_corner = 0
+0:1/0/terrains_peering_bit/top_right_corner = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0/terrains_peering_bit/bottom_right_corner = 0
+1:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0/terrains_peering_bit/top_left_corner = 0
+1:1/0/terrains_peering_bit/top_right_corner = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 6, -8, 6, 8, -8, 8)
+2:1/0/terrains_peering_bit/bottom_left_corner = 0
+2:1/0/terrains_peering_bit/top_left_corner = 0
+0:2/next_alternative_id = 4
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, -8, 8, -8, 8, 6, -6, 6)
+0:2/0/terrains_peering_bit/top_right_corner = 0
+0:2/1 = 1
+0:2/1/terrain_set = 0
+0:2/1/physics_layer_0/polygon_0/points = PackedVector2Array(-6, -8, 8, -8, 8, 6, -6, 6)
+0:2/3 = 3
+0:2/3/flip_h = true
+0:2/3/terrain_set = 0
+0:2/3/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 6, -8, 6, 6, -8, 6)
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 6, -8, 6)
+1:2/0/terrains_peering_bit/top_left_corner = 0
+1:2/0/terrains_peering_bit/top_right_corner = 0
+2:2/next_alternative_id = 2
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 6, -8, 6, 6, -8, 6)
+2:2/0/terrains_peering_bit/top_left_corner = 0
+
+[resource]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+terrain_set_0/mode = 1
+terrain_set_0/terrain_0/name = "Ice Platforms"
+terrain_set_0/terrain_0/color = Color(1.2754649e-06, 0.3270722, 0.34829408, 1)
+sources/0 = SubResource("TileSetAtlasSource_v0gcv")

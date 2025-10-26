@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://64ki3hib2dfy"
+path="res://.godot/imported/ice_bg.aseprite-43c1e495988b7fbb2c802b41ae279a6c.res"
+
+[deps]
+
+source_file="res://assets/art/tileset/ice_bg.aseprite"
+dest_files=["res://.godot/imported/ice_bg.aseprite-43c1e495988b7fbb2c802b41ae279a6c.res"]
+
+[params]
+

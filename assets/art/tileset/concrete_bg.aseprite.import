@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://d0iypr51723n8"
+path="res://.godot/imported/concrete_bg.aseprite-9ac4822b0a8bcf26e3f53cbfcafaad02.res"
+
+[deps]
+
+source_file="res://assets/art/tileset/concrete_bg.aseprite"
+dest_files=["res://.godot/imported/concrete_bg.aseprite-9ac4822b0a8bcf26e3f53cbfcafaad02.res"]
+
+[params]
+

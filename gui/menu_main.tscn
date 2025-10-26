@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://clnqwgpek2ppd" path="res://gui/menu_main.gd" id="1_l2prv"]
 [ext_resource type="PackedScene" uid="uid://cv0ir38edj1u6" path="res://gui/menu_settings.tscn" id="2_gtd7g"]
 [ext_resource type="Theme" uid="uid://d17mk31idftvd" path="res://gui/theme_primary.tres" id="2_l2prv"]
-[ext_resource type="AudioStream" uid="uid://yw0cxkd1qonf" path="res://audio/tick_001.ogg" id="3_henhl"]
-[ext_resource type="AudioStream" uid="uid://defham2cwl4ty" path="res://audio/select_001.ogg" id="4_gtd7g"]
+[ext_resource type="AudioStream" uid="uid://yw0cxkd1qonf" path="res://assets/audio/tick_001.ogg" id="3_henhl"]
+[ext_resource type="AudioStream" uid="uid://defham2cwl4ty" path="res://assets/audio/select_001.ogg" id="4_gtd7g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l2prv"]
 font_size = 64

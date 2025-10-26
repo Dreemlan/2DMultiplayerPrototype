@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bqwgaktn0uvbn"
+path="res://.godot/imported/chicken_old.ase-b2ea59e91b4c358fde5ba908b2bf337e.res"
+
+[deps]
+
+source_file="res://assets/art/character/chicken_old.ase"
+dest_files=["res://.godot/imported/chicken_old.ase-b2ea59e91b4c358fde5ba908b2bf337e.res"]
+
+[params]
+

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://jnlnvsgv7t3m"]
-
-[ext_resource type="Script" uid="uid://d4j3gulpuesta" path="res://component/networking/component_transform.gd" id="1_x1sxw"]
-
-[node name="ComponentTransform" type="Node"]
-script = ExtResource("1_x1sxw")

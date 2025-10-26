@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyoajpyvxaaq"]
-
-[ext_resource type="Script" uid="uid://kacool7rr00t" path="res://component/networking/compoment_movement_platformer.gd" id="1_xah0n"]
-
-[node name="ComponentMovementPlatformer" type="Node"]
-script = ExtResource("1_xah0n")

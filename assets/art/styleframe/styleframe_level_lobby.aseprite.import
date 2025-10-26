@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bf7iumikhgtm4"
+path="res://.godot/imported/styleframe_level_lobby.aseprite-b65fd3ad26471c219862a2281a585e99.res"
+
+[deps]
+
+source_file="res://assets/art/styleframe/styleframe_level_lobby.aseprite"
+dest_files=["res://.godot/imported/styleframe_level_lobby.aseprite-b65fd3ad26471c219862a2281a585e99.res"]
+
+[params]
+

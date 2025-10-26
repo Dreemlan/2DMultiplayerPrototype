@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://yiitflu1a0ti"
+path="res://.godot/imported/player_body.ase-3272529ca9c771e7fd6f7b3370e5e9b2.res"
+
+[deps]
+
+source_file="res://assets/art/character/player_body.ase"
+dest_files=["res://.godot/imported/player_body.ase-3272529ca9c771e7fd6f7b3370e5e9b2.res"]
+
+[params]
+
