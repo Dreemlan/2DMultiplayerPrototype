@@ -1,14 +1,6 @@
 extends Node
 
 var current_player_nodes: Dictionary = {}
-var player_color: Dictionary = { # PEER IDs assigned to color
-	Color.RED: 0,
-	Color.GREEN: 0,
-	Color.BLUE: 0,
-	Color.PURPLE: 0,
-	Color.YELLOW: 0,
-	Color.TEAL: 0,
-}
 
 @onready var level_manager: Node = get_node("/root/Main/LevelManager")
 

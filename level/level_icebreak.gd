@@ -12,6 +12,7 @@ var players_eliminated: Array = []
 
 signal round_won(player_node)
 
+
 func _enter_tree() -> void:
 	if multiplayer.is_server():
 		for peer_id in Multiplayer.peer_display_names.keys():
@@ -41,7 +42,7 @@ func _physics_process(_delta: float) -> void:
 				var latest_collision = player.get_last_slide_collision()
 				if last_collision != latest_collision:
 					var col_rng = randi_range(0, 5)
-					if col_rng == rng_num: 
+					if col_rng == rng_num:
 					
 						# Get cell coords
 						var cell_coords: Vector2 = tile_map_layer.local_to_map(latest_collision.get_position() - latest_collision.get_normal())

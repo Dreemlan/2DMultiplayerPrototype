@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7e2b43grki6f"
-path="res://.godot/imported/chicken.png-59db26693520f7389e6559bd4dd9062f.ctex"
+uid="uid://c2p740xg5e5rf"
+path="res://.godot/imported/water.png-d766b5f719ced0c3b7284d6a40278aaa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/character/chicken.png"
-dest_files=["res://.godot/imported/chicken.png-59db26693520f7389e6559bd4dd9062f.ctex"]
+source_file="res://art/tileset/water.png"
+dest_files=["res://.godot/imported/water.png-d766b5f719ced0c3b7284d6a40278aaa.ctex"]
 
 [params]
 
