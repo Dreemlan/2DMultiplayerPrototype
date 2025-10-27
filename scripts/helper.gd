@@ -18,12 +18,13 @@ func _make_prefix() -> String:
 		return "[color=gray]NO PEER[/color]:"
 
 	var status := peer.get_connection_status()
-	var id := multiplayer.get_unique_id()
+	var id := 0
 
 	match status:
 		MultiplayerPeer.CONNECTION_CONNECTING:
 			return "[color=%s]CLIENT[%s] (CONNECTING)[/color]:" % [COLOR_CLIENT, id]
 		MultiplayerPeer.CONNECTION_CONNECTED:
+			id = multiplayer.get_unique_id()
 			if id == 1:
 				return "[color=%s]SERVER[%s][/color]:" % [COLOR_SERVER, id]
 			else:

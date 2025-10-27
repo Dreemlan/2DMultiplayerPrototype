@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=4 uid="uid://b0lnklqekvn00"]
+
+[ext_resource type="Shader" uid="uid://8bvdnymj5kly" path="res://assets/shaders/player_palette_swap.gdshader" id="1_5ngxq"]
+[ext_resource type="Texture2D" uid="uid://bia66hjorh4vj" path="res://assets/art/character/8bit_player.png" id="2_gg82q"]
+
+[resource]
+shader = ExtResource("1_5ngxq")
+shader_parameter/index_map = ExtResource("2_gg82q")
+shader_parameter/palette_colors = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/color_count = 4

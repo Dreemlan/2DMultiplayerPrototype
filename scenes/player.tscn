@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dr1mjanfdji7y"]
+[gd_scene load_steps=9 format=4 uid="uid://dr1mjanfdji7y"]
 
-[ext_resource type="Texture2D" uid="uid://cfwuc7tutc1yg" path="res://icon.svg" id="1_hsefk"]
 [ext_resource type="Script" uid="uid://beo5ugvnmh0bd" path="res://scripts/player.gd" id="1_xlvtu"]
+[ext_resource type="Shader" uid="uid://8bvdnymj5kly" path="res://assets/shaders/player_palette_swap.gdshader" id="2_dqkch"]
+[ext_resource type="Texture2D" uid="uid://bia66hjorh4vj" path="res://assets/art/character/8bit_player.png" id="2_qhqgy"]
 [ext_resource type="Script" uid="uid://cvdkt1mj4nbl0" path="res://scripts/player_input.gd" id="3_qhqgy"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_g2els"]
@@ -9,8 +10,14 @@ properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlg0r"]
+shader = ExtResource("2_dqkch")
+shader_parameter/index_map = ExtResource("2_qhqgy")
+shader_parameter/palette_colors = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/color_count = 4
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hsefk"]
-size = Vector2(128, 128)
+size = Vector2(8, 8)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qhqgy"]
 properties/0/path = NodePath(".:input_dir")
@@ -18,8 +25,7 @@ properties/0/spawn = true
 properties/0/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player_input", "input_synchronizer")]
-collision_layer = 0
-collision_mask = 0
+collision_layer = 2
 script = ExtResource("1_xlvtu")
 player_input = NodePath("PlayerInput")
 input_synchronizer = NodePath("PlayerInput/InputSynchronizer")
@@ -28,9 +34,13 @@ input_synchronizer = NodePath("PlayerInput/InputSynchronizer")
 replication_config = SubResource("SceneReplicationConfig_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_hsefk")
+texture_filter = 1
+texture_repeat = 1
+material = SubResource("ShaderMaterial_qlg0r")
+texture = ExtResource("2_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_hsefk")
 
 [node name="PlayerInput" type="Node" parent="."]

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bc0uuxoc3hycs"
+path="res://.godot/imported/8bit_tilesheet_water_16x8.aseprite-f81279513378be262d5dcd265e15f1ff.res"
+
+[deps]
+
+source_file="res://assets/art/tileset/8bit_tilesheet_water_16x8.aseprite"
+dest_files=["res://.godot/imported/8bit_tilesheet_water_16x8.aseprite-f81279513378be262d5dcd265e15f1ff.res"]
+
+[params]
+

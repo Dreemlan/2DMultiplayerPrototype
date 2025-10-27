@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ugsfm8qbojmm"
+path="res://.godot/imported/8bit_tilesheet_ice_16x8.aseprite-f67bf9867ca8fee812b702e966c8ce34.res"
+
+[deps]
+
+source_file="res://assets/art/tileset/8bit_tilesheet_ice_16x8.aseprite"
+dest_files=["res://.godot/imported/8bit_tilesheet_ice_16x8.aseprite-f67bf9867ca8fee812b702e966c8ce34.res"]
+
+[params]
+
