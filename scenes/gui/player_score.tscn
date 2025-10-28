@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dm0bo1etoumqy"]
+[gd_scene load_steps=3 format=3 uid="uid://dm0bo1etoumqy"]
 
 [ext_resource type="Script" uid="uid://dj4ajhjar4357" path="res://scenes/gui/player_score.gd" id="1_2l7le"]
+[ext_resource type="Theme" uid="uid://b1h8wnf8wc42v" path="res://assets/themes/pixel_theme.tres" id="1_wprpk"]
 
 [node name="PlayerScore" type="MarginContainer"]
 offset_right = 10.0
 offset_bottom = 23.0
+theme = ExtResource("1_wprpk")
 script = ExtResource("1_2l7le")
 
 [node name="Label" type="Label" parent="."]

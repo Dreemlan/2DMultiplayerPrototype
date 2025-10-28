@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=4 uid="uid://dr1mjanfdji7y"]
 
-[ext_resource type="Script" uid="uid://beo5ugvnmh0bd" path="res://scripts/player.gd" id="1_xlvtu"]
+[ext_resource type="Script" uid="uid://beo5ugvnmh0bd" path="res://scripts/entity/player.gd" id="1_xlvtu"]
 [ext_resource type="Shader" uid="uid://8bvdnymj5kly" path="res://assets/shaders/player_palette_swap.gdshader" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bia66hjorh4vj" path="res://assets/art/character/8bit_player.png" id="2_qhqgy"]
-[ext_resource type="Script" uid="uid://cvdkt1mj4nbl0" path="res://scripts/player_input.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://cvdkt1mj4nbl0" path="res://scripts/entity/player_input.gd" id="3_qhqgy"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_g2els"]
 properties/0/path = NodePath(".:position")
@@ -34,8 +34,6 @@ input_synchronizer = NodePath("PlayerInput/InputSynchronizer")
 replication_config = SubResource("SceneReplicationConfig_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-texture_repeat = 1
 material = SubResource("ShaderMaterial_qlg0r")
 texture = ExtResource("2_qhqgy")
 

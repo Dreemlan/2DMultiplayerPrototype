@@ -2,9 +2,8 @@ extends TileMapLayer
 
 var destroyed_cells: Array = []
 
-var scores: Dictionary = {}
+var round_wins: Dictionary = {}
 
-signal player_scored(network_id: int)
 signal player_won(network_id: int)
 
 
@@ -17,22 +16,20 @@ func _peer_connected(network_id: int) -> void:
 		rpc_id(network_id, "destroy_cells", destroyed_cells)
 
 
-func _add_player_score(network_id: int) -> void:
-	if not scores.has(network_id):
-		scores.set(network_id, 0)
+func _add_player_round_win(network_id: int) -> void:
+	if not round_wins.has(network_id):
+		round_wins.set(network_id, 0)
 	
-	if scores[network_id] >= 3:
+	if round_wins[network_id] >= 3:
 		player_won.emit(network_id)
 	else:
-		scores[network_id] += 1
-		player_scored.emit(network_id)
+		round_wins[network_id] += 1
 
 
-func queue_cell_destruction(cell: Vector2i, network_id: int) -> void:
+func queue_cell_destruction(cell: Vector2i) -> void:
 	cell = Vector2i(cell.x, cell.y)
 	destroyed_cells.append(cell)
 	rpc("destroy_cells", destroyed_cells)
-	_add_player_score(network_id)
 
 
 @rpc("authority", "call_local", "reliable")

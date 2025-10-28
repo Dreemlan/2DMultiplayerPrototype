@@ -1,7 +1,7 @@
 extends Node
 
-const GAME_SCENE = "res://scenes/game.tscn"
-const MAIN_MENU_SCENE = "res://scenes/main_menu.tscn"
+const GAME_SCENE = "res://scenes/game/game.tscn"
+const MAIN_MENU_SCENE = "res://scenes/menu/main_menu.tscn"
 const SERVER_PORT: int = 42069
 
 var is_hosting_game: bool = false

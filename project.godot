@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Helper="*res://scripts/helper.gd"
+Helper="*res://scripts/helper/helper.gd"
 NetworkManager="*res://scripts/network/network_manager.gd"
 
 [display]
